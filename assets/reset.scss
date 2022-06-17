@@ -1,0 +1,52 @@
+@import url('https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700;800&display=swap');
+
+html,
+body {
+  margin: 0;
+  padding: 0;
+  font-family: 'Almarai',
+    sans-serif;
+}
+
+p {
+
+  line-height: 1.7;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+
+input,
+select,
+.for_input,
+textarea,
+.textarea {
+  background: white;
+  font-family: inherit;
+
+  padding: 5px 10px;
+  border: 2px solid #c2c3c7;
+  background-color: #f3f5f9;
+  border-radius: 5px;
+  margin: 2px 5px;
+
+}
+
+.add,
+[type=submit] {
+  background: #7e54d8;
+  color: white;
+  display: flex;
+  gap: 10px;
+  align-items: center;
+  justify-content: center;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  width: 100%;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 1rem;
+}
