@@ -27,10 +27,10 @@
     "vue": "^2.6.14",
     "vue-server-renderer": "^2.6.14",
     "vue-template-compiler": "^2.6.14",
+    "@nuxtjs/fontawesome": "^1.1.2",
     "webpack": "^4.46.0"
   },
   "devDependencies": {
-    "@nuxtjs/fontawesome": "^1.1.2",
     "@nuxtjs/vuetify": "^1.12.3"
   }
 }
