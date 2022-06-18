@@ -4,17 +4,18 @@
     <main class="__subjects">
       <nuxt-link
         :to="`/subject/${subject._id}`"
-        v-for="subject in subjects"
+        v-for="(subject, n) in subjects"
         :key="subject._id"
         :title="subject.title"
+        class="_subject"
+        :style="'grid-area: A' + n"
       >
-        <div class="_subject">
-          <div class="detailes">
-            <h3>{{ subject.title }}</h3>
-            <div class="brown">{{ subject.subtitle }}</div>
-            <p>{{ subject.content }}...</p>
-          </div>
-          <div class="views">{{ subject.vist }} <Eye /></div>
+        <div class="img">
+          <img :src="subject.img" />
+        </div>
+
+        <div class="details">
+          <h2>{{ subject.title }}</h2>
         </div>
       </nuxt-link>
     </main>
@@ -22,25 +23,22 @@
 </template>
 
 <script>
-// conponents
-import Eye from "~/components/icons/eye";
-
 export default {
   name: "Top_10",
   props: ["top_subjects"],
   data() {
     return { subjects: [] };
   },
-  components: { Eye },
   mounted() {
     this.subjects = this.top_subjects.filter((subject) => {
-      const div = document.createElement("div");
-      div.innerHTML = subject.content
-        .replaceAll("<div>", "&nbsp;")
-        .replaceAll("<br>", "&nbsp;");
+      const text = subject.content;
+      const start = text.indexOf('<img src="') + 10;
+      const end = text.indexOf('"', start + 1);
+      let img = text.substring(start, end);
+      console.log(start);
 
-      let content = div.innerText;
-      return Object.assign(subject, { content: content.slice(0, 100) });
+      if (start < 10) img = "/images/general/logo.jpg";
+      return Object.assign(subject, { img });
     });
   },
 };
@@ -48,65 +46,83 @@ export default {
 
 <style lang="scss" scoped>
 .__subjects {
+  display: grid;
+  grid-template-areas:
+    "A0 A0 A0 A1"
+    "A0 A0 A0 A2"
+    "A0 A0 A0 A3"
+    "A5 A5 A4 A4"
+    "A5 A5 A4 A4"
+    "A6 A7 A8 A9";
+  grid-template-rows: repeat(7, 100px);
+  grid-template-columns: repeat(4, 1fr);
+  gap: 5px;
+
   a {
-    text-decoration: none;
-    color: #333;
+    position: relative;
+    color: white;
 
-    ._subject {
-      margin: 2em 0;
-      flex: 1;
-      background: #eee;
-      display: flex;
-      padding: 10px;
-      box-shadow: rgba(0, 0, 0, 0.45) 0px 25px 20px -20px;
+    .details {
+      inset: 0;
+      position: absolute;
+      display: grid;
+      place-items: center;
+      background: linear-gradient(
+        rgba(101, 19, 142, 0.8),
+        rgba(18, 18, 118, 0.8)
+      );
+      z-index: 2;
+      transition: 0.3s;
+      opacity: 0;
 
-      .views {
-        font-size: 0.8em;
+      h2 {
+        font-size: 16px;
+        margin: 0;
+      }
+    }
+
+    .img {
+      inset: 0;
+      position: absolute;
+      z-index: 1;
+
+      img {
+        width: 100%;
+        height: 100%;
         transition: 0.3s;
-        opacity: 0;
-
-        @media (max-width: 720px) {
-          display: none;
-        }
-      }
-
-      .detailes {
-        flex: 1;
-
-        h3 {
-          margin: 0;
-          &::before {
-            content: "#";
-            margin: 0 5px;
-            color: #28bda5;
-            opacity: 0;
-            transition: 0.2s;
-          }
-        }
-        .brown {
-          margin: 0 0 10px;
-          font-size: 0.7em;
-        }
-
-        p {
-          color: #4b4a4a;
-          margin: 0;
-          font-size: 0.89em;
-        }
+        object-fit: cover;
       }
     }
 
-    .views {
-      display: flex;
-      gap: 4px;
-      align-items: center;
-      height: 2em;
-    }
     &:hover {
-      .views,
-      .views,
-      .detailes h3::before {
+      .details {
         opacity: 1;
+      }
+      img {
+        object-fit: contain;
+        transform: scale(0.7);
+      }
+    }
+
+    &:nth-of-type(1),
+    &:nth-of-type(5),
+    &:nth-of-type(6) {
+      overflow: hidden;
+
+      .details {
+        display: block;
+        padding: 1em 1.3em;
+        top: auto;
+        bottom: -100%;
+      }
+      &:hover {
+        .details {
+          bottom: 0;
+        }
+        img {
+          object-fit: cover;
+          transform: scale(1);
+        }
       }
     }
   }

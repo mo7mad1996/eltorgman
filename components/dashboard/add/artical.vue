@@ -24,7 +24,7 @@
 
         <div class="input_field">
           <form @submit.prevent="addKeyWord">
-            <label for="key_words">الكلمات الافتتاحيه</label>
+            <label for="key_words">الكلمات بحثيه</label>
             <input type="text" id="key_words" v-model="key_word" />
             <button type="submit">أضف</button>
           </form>
@@ -33,7 +33,12 @@
     </article>
 
     <ul class="key_words">
-      <li v-for="word in subject.key_words" :key="word">{{ word }}</li>
+      <li v-for="(word, n) in subject.key_words" :key="n" class="word">
+        <div @click="remove(n)" class="delete">
+          <Fa icon="xmark" />
+        </div>
+        {{ word }}
+      </li>
     </ul>
 
     <h4>عناصر التحكم</h4>
@@ -86,7 +91,11 @@ export default {
   components: { Controles, Toggle, Save },
   methods: {
     ...mapActions(["set_alert"]),
-
+    remove(n) {
+      this.subject.key_words = this.subject.key_words.filter((el, ndx) => {
+        if (ndx != n) return el;
+      });
+    },
     add() {
       let content = this.$refs.project.innerHTML;
       let project = {
@@ -118,6 +127,42 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+.key_words {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 0.87em 0;
+  gap: 0.87em;
+
+  .word {
+    padding: 10px;
+    border-radius: 3px;
+    border: 1px solid #12185e;
+    color: #12185e;
+    background: #f7f4f5;
+    list-style: none;
+    position: relative;
+
+    .delete {
+      position: absolute;
+      top: 0;
+      left: 0;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 0, 0, 0.2);
+      display: none;
+      border-radius: 50%;
+      width: 1.4em;
+      height: 1.4em;
+      place-items: center;
+      color: red;
+      cursor: pointer;
+    }
+    &:hover {
+      .delete {
+        display: grid;
+      }
+    }
+  }
+}
 .row {
   gap: 5px;
 

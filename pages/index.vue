@@ -58,7 +58,7 @@ export default {
 
 <style lang="scss" scoped>
 .__land_page {
-  // background: #eee;
+  background: #eee;
 
   .row {
     display: flex;

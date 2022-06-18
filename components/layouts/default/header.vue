@@ -1,5 +1,5 @@
 <template>
-  <header>
+  <header @click="active = false">
     <div class="continer">
       <div class="row">
         <nuxt-link to="/" class="logo" title="الترجمان">
@@ -35,7 +35,7 @@
               </nuxt-link>
             </ul>
           </div>
-          <button @click.prevent="active = !active"><fa icon="bars" /></button>
+          <button @click.stop="active = !active"><fa icon="bars" /></button>
         </nav>
       </div>
     </div>
@@ -78,6 +78,26 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@mixin menu {
+  display: none;
+  flex-direction: column;
+  width: 150px;
+  padding: 0;
+  background: #26447bd2;
+  color: #f1f1f1;
+}
+@mixin effect {
+  &:hover {
+    background: #212121;
+    color: #8beab6;
+  }
+}
+@mixin normal-effect {
+  &:hover {
+    background: rgba(255, 255, 255, 0.2);
+  }
+}
+
 header {
   background: #122851;
   color: #f0f1f3;
@@ -135,9 +155,7 @@ header {
         border: none;
         cursor: pointer;
 
-        &:hover {
-          background: #fff2;
-        }
+        @include normal-effect;
 
         @media (max-width: 1020px) {
           display: block;
@@ -150,7 +168,9 @@ header {
 
         @media (max-width: 582px) {
           border: #183153 2px solid;
-          box-shadow: rgb(38, 57, 77) 0px 20px 30px -10px;
+          box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+            rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+            rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
           position: absolute;
           top: 100%;
           flex-direction: column;
@@ -159,10 +179,7 @@ header {
           a {
             width: 100%;
 
-            &:hover {
-              background: #212121;
-              color: #fafafa;
-            }
+            @include effect;
           }
         }
       }
@@ -179,19 +196,13 @@ header {
           text-decoration: none;
           padding: 5px 10px;
 
-          &:hover {
-            background: #fff2;
-          }
+          @include normal-effect;
         }
         &.nav-links {
           @media (max-width: 582px) {
-            display: none;
+            @include menu;
+
             position: relative;
-            flex-direction: column;
-            background-image: linear-gradient(#ffd43b, #f6d769);
-            color: #122851;
-            min-width: 120px;
-            padding: 0;
 
             &::after {
               content: "";
@@ -204,29 +215,25 @@ header {
         }
         &.sections-links {
           @media (max-width: 1020px) {
-            display: none;
+            @include menu;
+
+            box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+              rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+              rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
             position: absolute;
-            flex-direction: column;
-            background-image: linear-gradient(#ffd43b, #f6d769);
-            color: #122851;
             top: 100%;
             left: 2px;
-            min-width: 120px;
             border: #183153 2px solid;
-            padding: 0;
 
             a {
               width: 100%;
 
-              &:hover {
-                background: #212121;
-                color: #fafafa;
-              }
+              @include effect;
             }
           }
           @media (max-width: 582px) {
             position: relative;
-            left: 0%;
+            left: 0;
             top: 0;
             order: 2;
             border: none;

@@ -4,6 +4,7 @@
       <div class="content">
         <h3>{{ subject.title }}</h3>
         <h4>{{ subject.subtitle }}</h4>
+        <span class="gray">{{ subject.section }}</span>
       </div>
 
       <div class="img">
@@ -38,7 +39,7 @@ export default {
 
       let src = text.substring(start, end);
 
-      if (start < 0) return "/images/general/logo.jpg";
+      if (start < 10) return "/images/general/logo.jpg";
       return src;
     },
   },
@@ -79,7 +80,7 @@ h4 {
   .img img {
     width: 180px;
     aspect-ratio: 16 / 9;
-    object-fit: cover;
+    object-fit: contain;
   }
 }
 </style>
