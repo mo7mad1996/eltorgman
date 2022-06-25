@@ -17,6 +17,22 @@ p {
   box-sizing: border-box;
 }
 
+.dashboard_section {
+  overflow: auto;
+  height: 100%;
+
+  .dashboard_title {
+    padding: 1rem 2rem;
+    position: sticky;
+    margin: 0;
+    top: 0;
+    background: white;
+  }
+
+  .dashboard_content {
+    padding: 10px 5px;
+  }
+}
 
 input,
 select,

@@ -1,21 +1,29 @@
 <template>
-  <main>
-    <h1>المواضيع</h1>
-    <nuxt-link to="/dashboard/add/subject">إضافة موضوع</nuxt-link>
-    <ul>
-      <li v-for="subject in subjects" :key="subject._id">
+  <section class="dashboard_section">
+    <h1 class="dashboard_title">
+      المواضيع
+
+      <nuxt-link
+        to="/dashboard/add/subject"
+        title="إضافة موضوع جديد"
+        class="custom-btn btn-3"
+      >
         <span>
-          {{ subject.title }}
+          <fa icon="file-circle-plus" />
         </span>
-        <div>
-          <button @click="remove(subject._id)">حذف</button>
-        </div>
-      </li>
-    </ul>
-  </main>
+      </nuxt-link>
+    </h1>
+
+    <div class="dashboard_content">
+      <Subjects_ul :subjects="subjects" @removed="removed" />
+    </div>
+  </section>
 </template>
 
 <script>
+// components
+import Subjects_ul from "~/components/dashboard/content/sections_ul";
+
 export default {
   layout: "dashboard",
 
@@ -25,13 +33,92 @@ export default {
   },
   name: "Subjects",
   methods: {
-    remove(id) {
-      this.$axios.$delete("/subjects/delete/" + id).then((_) => {
-        this.subjects = this.subjects.filter((subject) => subject._id != id);
-      });
+    removed(id) {
+      this.subjects = this.subjects.filter((subject) => subject._id != id);
     },
   },
+  components: { Subjects_ul },
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+.dashboard_title {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .btn-3 {
+    background: rgb(0, 172, 238);
+    position: relative;
+    background: linear-gradient(
+      0deg,
+      rgba(0, 172, 238, 1) 0%,
+      rgba(2, 126, 251, 1) 100%
+    );
+    width: 60px;
+    text-align: center;
+    border: none;
+  }
+
+  .btn-3 span {
+    position: relative;
+    display: block;
+    width: 100%;
+    height: 100%;
+    color: white;
+  }
+  .btn-3:before,
+  .btn-3:after {
+    position: absolute;
+    content: "";
+    right: 0;
+    top: 0;
+    background: rgba(2, 126, 251, 1);
+    transition: all 0.3s ease;
+  }
+  .btn-3:before {
+    height: 0%;
+    width: 2px;
+  }
+  .btn-3:after {
+    width: 0%;
+    height: 2px;
+  }
+  .btn-3:hover {
+    background: transparent;
+    box-shadow: none;
+  }
+  .btn-3:hover:before {
+    height: 100%;
+  }
+  .btn-3:hover:after {
+    width: 100%;
+  }
+  .btn-3 span:hover {
+    color: rgba(2, 126, 251, 1);
+  }
+  .btn-3 span:before,
+  .btn-3 span:after {
+    position: absolute;
+    content: "";
+    left: 0;
+    bottom: 0;
+    background: rgba(2, 126, 251, 1);
+    transition: all 0.3s ease;
+  }
+  .btn-3 span:before {
+    width: 2px;
+    height: 0%;
+  }
+  .btn-3 span:after {
+    width: 0%;
+    height: 2px;
+  }
+  .btn-3 span:hover:before {
+    height: 100%;
+  }
+  .btn-3 span:hover:after {
+    width: 100%;
+  }
+}
+</style>

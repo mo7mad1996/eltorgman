@@ -1,8 +1,9 @@
 <template>
-  <div>
-    <h1>إضافة خبر جديد::</h1>
+  <section class="dashboard_section">
+    <h1 class="dashboard_title">إضافة خبر جديد::</h1>
+
     <Add_news />
-  </div>
+  </section>
 </template>
 
 <script>
@@ -12,6 +13,7 @@ import Add_news from "~/components/dashboard/add/news";
 export default {
   name: "Add_news_page",
   components: { Add_news },
+  layout: "dashboard",
 };
 </script>
 

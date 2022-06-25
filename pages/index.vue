@@ -40,11 +40,17 @@ export default {
   name: "LandPage",
   head: { title: "الرئيسيه" },
   async asyncData({ $axios }) {
-    const top_subjects = await $axios.$get("/subjects/top?limit=10");
-    const new_subjects = await $axios.$get("/subjects/new?limit=10");
-    const new_news = await $axios.$get("/news/new?limit=4");
+    const response = await Promise.all([
+      $axios.$get("/subjects/top?limit=10"),
+      $axios.$get("/subjects/new?limit=10"),
+      $axios.$get("/news/new?limit=4"),
+    ]);
 
-    return { top_subjects, new_subjects, new_news };
+    return {
+      top_subjects: response[0],
+      new_subjects: response[1],
+      new_news: response[2],
+    };
   },
   components: {
     Top_10,

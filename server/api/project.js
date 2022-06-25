@@ -21,6 +21,9 @@ module.exports = (router) => {
   );
   router.get("/subjects", (req, res) =>
     Subject.find()
+    .sort({
+      date: -1
+    })
     .then((subjects) => res.json(subjects))
     .catch((err) => console.log(err))
   );

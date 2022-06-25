@@ -1,5 +1,9 @@
 <template>
-  <h1>الاخبار</h1>
+  <section class="dashboard_section">
+    <h1 class="dashboard_title">الاخبار</h1>
+
+    <div class="dashboard_content"></div>
+  </section>
 </template>
 
 <script>

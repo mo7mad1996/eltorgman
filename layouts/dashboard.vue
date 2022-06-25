@@ -25,40 +25,47 @@
     <main>
       <nuxt />
     </main>
+
+    <Alert />
   </div>
 </template>
 
 <script>
+// components
+import Alert from "~/components/layouts/Alert";
+
 export default {
   name: "dashboard",
   data: () => ({
     links: [
       {
         to: "/dashboard/content/subjects",
-        img: "/images/dashboard/subject.webp",
         title: "المواضيع",
         icon: "building-columns",
       },
       {
         to: "/dashboard/content/news",
-        img: "/images/dashboard/subject.webp",
         title: "الاخبار",
         icon: "radio",
       },
       {
+        to: "/dashboard/content/prices",
+        title: "الاسعار",
+        icon: "money-bill-1-wave",
+      },
+      {
         to: "/dashboard/الاقتراحات",
-        img: "/images/dashboard/contant.webp",
         title: "الاقتراحات والشكاوي",
         icon: "arrows-split-up-and-left",
       },
       {
         to: "/dashboard/settings",
-        img: "/images/dashboard/settings.svg",
         title: "الإعدادات",
         icon: "bug",
       },
     ],
   }),
+  components: { Alert },
 };
 </script>
 
@@ -75,8 +82,7 @@ a {
 
   main {
     flex: 1;
-    padding: 5px;
-    overflow: auto;
+    overflow: hidden;
     background: #f3f3f3;
   }
 

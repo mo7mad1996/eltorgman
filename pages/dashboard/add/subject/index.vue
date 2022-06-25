@@ -1,11 +1,9 @@
 <template>
-  <div class="__add_new_subject">
-    <div class="continer">
-      <h4>إضافة موضوع</h4>
-    </div>
+  <section class="__add_new_subject dashboard_section">
+    <h4 class="dashboard_title">إضافة موضوع</h4>
 
     <GET_artical />
-  </div>
+  </section>
 </template>
 
 <script>
@@ -15,6 +13,7 @@ import GET_artical from "~/components/dashboard/add/artical";
 export default {
   name: "Add_new_artical",
   components: { GET_artical },
+  layout: "dashboard",
 };
 </script>
 
