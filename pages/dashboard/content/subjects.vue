@@ -17,6 +17,8 @@
 
 <script>
 export default {
+  layout: "dashboard",
+
   async asyncData({ $axios }) {
     const subjects = await $axios.$get("/subjects");
     return { subjects };

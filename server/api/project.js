@@ -51,13 +51,27 @@ module.exports = (router) => {
   );
 
   router.post("/subjects/search", async (req, res) => {
-    const sections =
-      await Subject.find({
-        title: {
-          $regex: new RegExp('^' + req.body.search + '.*', 'i')
-        }
-      })
-      .exec()
+
+    const sections = await Subject.find({
+      '$or': [{
+          title: {
+            $regex: req.body.search
+          }
+        },
+        {
+          subtitle: {
+            $regex: req.body.search
+          }
+        },
+        {
+          content: {
+            $regex: req.body.search
+          }
+        },
+      ]
+    }).sort({
+      date: -1
+    });
 
     res.json(sections)
   })

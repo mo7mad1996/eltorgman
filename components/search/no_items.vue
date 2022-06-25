@@ -21,7 +21,7 @@ export default {
 
   .icon {
     font-size: 10em;
-    color: #f72f3c;
+    color: #9d9696;
   }
 
   .brown {

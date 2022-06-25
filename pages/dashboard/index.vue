@@ -1,10 +1,6 @@
 <template>
-  <div class="continer">
-    <h3>dashboard</h3>
-
-    <nuxt-link to="/dashboard/content/subjects">المواضيع</nuxt-link>
-    <nuxt-link to="/dashboard/add/news">إضافة خبر</nuxt-link>
-    <nuxt-link to="/dashboard/الاقتراحات">الاقتراحات والشكاوي</nuxt-link>
+  <div>
+    <img src="../../static/images/general/logo.png" alt="الترجمان" />
   </div>
 </template>
 
@@ -12,7 +8,9 @@
 export default {
   name: "DashbordHomePage",
   middleware: "auth",
+  layout: "dashboard",
 };
 </script>
 
-<style></style>
+<style lang="scss" scoped>
+</style>
