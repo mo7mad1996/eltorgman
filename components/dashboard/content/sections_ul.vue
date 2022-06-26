@@ -34,7 +34,7 @@
 
   <div v-else class="text-center">
     <No_items />
-    <nuxt-link to="/dashboard/add/subject">أضف جديد</nuxt-link>
+    <nuxt-link to="/dashboard/add/subject">أضف موضوع جديد</nuxt-link>
   </div>
 </template>
 

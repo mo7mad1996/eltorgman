@@ -4,6 +4,16 @@ const mongoose = require("mongoose");
 const News = mongoose.model("news");
 
 module.exports = (router) => {
+
+  router.get("/news", (req, res) => {
+    News.find()
+      .limit()
+      .sort({
+        date: -1
+      })
+      .then((news) => res.json(news));
+  });
+
   router.post("/news/add", (req, res) => {
     const form = formidable({
       uploadDir: path.join(__dirname, "../../static/news"),
@@ -51,4 +61,6 @@ module.exports = (router) => {
       )
       .catch((err) => res.json(err));
   });
+
+  router.delete('/news/delete/:id', (req, res) => News.findByIdAndDelete(req.params.id).then(data => res.json(data)))
 };

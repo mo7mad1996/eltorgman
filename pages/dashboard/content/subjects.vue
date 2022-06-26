@@ -6,7 +6,7 @@
       <nuxt-link
         to="/dashboard/add/subject"
         title="إضافة موضوع جديد"
-        class="custom-btn btn-3"
+        class="btn"
       >
         <span>
           <fa icon="file-circle-plus" />
@@ -23,6 +23,8 @@
 <script>
 // components
 import Subjects_ul from "~/components/dashboard/content/sections_ul";
+// vuex
+import { mapActions } from "vuex";
 
 export default {
   layout: "dashboard",
@@ -33,92 +35,12 @@ export default {
   },
   name: "Subjects",
   methods: {
+    ...mapActions(["set_alert"]),
     removed(id) {
       this.subjects = this.subjects.filter((subject) => subject._id != id);
+      this.set_alert({ type: "success", text: "تم حذف الموضوع" });
     },
   },
   components: { Subjects_ul },
 };
 </script>
-
-<style lang="scss" scoped>
-.dashboard_title {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-
-  .btn-3 {
-    background: rgb(0, 172, 238);
-    position: relative;
-    background: linear-gradient(
-      0deg,
-      rgba(0, 172, 238, 1) 0%,
-      rgba(2, 126, 251, 1) 100%
-    );
-    width: 60px;
-    text-align: center;
-    border: none;
-  }
-
-  .btn-3 span {
-    position: relative;
-    display: block;
-    width: 100%;
-    height: 100%;
-    color: white;
-  }
-  .btn-3:before,
-  .btn-3:after {
-    position: absolute;
-    content: "";
-    right: 0;
-    top: 0;
-    background: rgba(2, 126, 251, 1);
-    transition: all 0.3s ease;
-  }
-  .btn-3:before {
-    height: 0%;
-    width: 2px;
-  }
-  .btn-3:after {
-    width: 0%;
-    height: 2px;
-  }
-  .btn-3:hover {
-    background: transparent;
-    box-shadow: none;
-  }
-  .btn-3:hover:before {
-    height: 100%;
-  }
-  .btn-3:hover:after {
-    width: 100%;
-  }
-  .btn-3 span:hover {
-    color: rgba(2, 126, 251, 1);
-  }
-  .btn-3 span:before,
-  .btn-3 span:after {
-    position: absolute;
-    content: "";
-    left: 0;
-    bottom: 0;
-    background: rgba(2, 126, 251, 1);
-    transition: all 0.3s ease;
-  }
-  .btn-3 span:before {
-    width: 2px;
-    height: 0%;
-  }
-  .btn-3 span:after {
-    width: 0%;
-    height: 2px;
-  }
-  .btn-3 span:hover:before {
-    height: 100%;
-  }
-  .btn-3 span:hover:after {
-    width: 100%;
-  }
-}
-</style>

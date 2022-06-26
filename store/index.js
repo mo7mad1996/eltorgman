@@ -36,10 +36,13 @@ const actions = {
   set_alert({
     commit
   }, data) {
-    commit("open_alert");
-    commit("alert_type", data.type);
-    commit("set_alert", data.text);
-    timeout = setTimeout((_) => commit("close_alert"), 10e3);
+    commit("close_alert")
+    setTimeout(_ => {
+      commit("open_alert");
+      commit("alert_type", data.type);
+      commit("set_alert", data.text);
+      timeout = setTimeout((_) => commit("close_alert"), 10e3);
+    }, 30)
   },
 };
 

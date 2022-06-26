@@ -25,6 +25,62 @@
   }
 }
 
+.dashboard_title {
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  .btn {
+    background: #00acee;
+    width: 60px;
+    height: 1.4em;
+    position: relative;
+
+    span {
+      line-height: 1;
+      position: absolute;
+      inset: 2px;
+      background: #00acee;
+      display: grid;
+      place-items: center;
+      color: white;
+      z-index: 2;
+      transition: color 0.4s;
+    }
+
+    &::after,
+    &::before {
+      content: "";
+      position: absolute;
+      z-index: 1;
+      background: white;
+      transform: translate(-50%, -50%);
+      top: 50%;
+      left: 50%;
+      width: 100%;
+      height: 100%;
+      transition: 0.7s;
+    }
+
+    &:hover,
+    &:focus {
+      span {
+        background: white;
+        color: #00acee;
+      }
+
+      &::before {
+        width: 0;
+      }
+
+      &::after {
+        height: 0;
+      }
+    }
+  }
+}
+
 .input_field_file {
   margin: 5px 0;
 
