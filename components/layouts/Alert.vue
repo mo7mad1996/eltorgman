@@ -33,8 +33,8 @@ export default {
   border-radius: 7px;
   transition: 0.3s;
   z-index: 10;
-  color: white;
   transform: translateX(-50%);
+  font-weight: bold;
   box-shadow: rgba(181, 179, 179, 0.59) 0px 2px 70px 4px;
 
   &.active {
@@ -42,14 +42,14 @@ export default {
   }
 
   &.error {
-    border: 2px solid red;
-    background-color: #861657;
-    background-image: linear-gradient(315deg, #861657 0%, #aa4465 74%);
+    border: 2px solid #e8584b;
+    background-color: #ffd4de;
+    color: #e8584b;
   }
   &.success {
-    border: 2px solid #13f212;
-    background-color: #3bb78f;
-    background-image: linear-gradient(315deg, #3bb78f 0%, #0bab64 74%);
+    border: 2px solid #409f6b;
+    color: #409f6b;
+    background-color: #d9fdad;
   }
 }
 </style>

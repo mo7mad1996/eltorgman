@@ -33,6 +33,7 @@ mongoose.connect(
 require("./models/user");
 require("./models/subject");
 require("./models/news");
+require("./models/price");
 
 // ..:: middlewares ::..
 require("./middlewares")(app);

@@ -9,3 +9,4 @@ router.post("/post", (req, res) => res.json(req.body));
 require("./auth")(router);
 require("./news")(router);
 require("./project")(router);
+require("./price")(router);

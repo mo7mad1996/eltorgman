@@ -1,7 +1,6 @@
 <template>
   <div class="__land_page">
-    <!-- Intro -->
-    <Intro />
+    <Price :prices="prices" v-if="prices.length" />
 
     <div class="continer">
       <!-- <Top_10 /> -->
@@ -17,7 +16,6 @@
           <News :news="new_news" />
 
           <h3>الاسعار هنا</h3>
-          <Price />
         </div>
       </main>
 
@@ -30,7 +28,6 @@
 </template>
 
 <script>
-import Intro from "~/components/landPage/Intro";
 import Top_10 from "~/components/landPage/top_10";
 import New_content from "~/components/landPage/new_content";
 import News from "~/components/landPage/news";
@@ -44,18 +41,19 @@ export default {
       $axios.$get("/subjects/top?limit=10"),
       $axios.$get("/subjects/new?limit=10"),
       $axios.$get("/news/new?limit=4"),
+      $axios.$get("/prices"),
     ]);
 
     return {
       top_subjects: response[0],
       new_subjects: response[1],
       new_news: response[2],
+      prices: response[3],
     };
   },
   components: {
     Top_10,
     New_content,
-    Intro,
     News,
     Price,
   },
