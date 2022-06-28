@@ -1,4 +1,3 @@
-const formidable = require("formidable");
 const path = require("path");
 const mongoose = require("mongoose");
 const News = mongoose.model("news");
