@@ -90,6 +90,7 @@ export default {
         }
         .img {
           width: 120px;
+          height: 120px;
 
           // border-radius: 10px;
           overflow: hidden;
