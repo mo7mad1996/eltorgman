@@ -1,26 +1,30 @@
 <template>
   <div class="__news">
-    <ul>
-      <nuxt-link
-        :to="'/news/' + n._id"
-        v-for="n in news"
-        :key="n._id"
-        :title="n.title"
-      >
-        <li>
-          <div class="img">
-            <img
-              :src="n.img || '/images/general/logo.jpg'"
-              :alt="n.img ? n.title : 'الترجمان'"
-            />
-          </div>
-          <div class="content">
-            <h3>{{ n.title }}</h3>
-            <p>{{ n.subtitle }}</p>
-          </div>
-        </li>
-      </nuxt-link>
-    </ul>
+    <div class="right">
+      <ul>
+        <nuxt-link
+          :to="'/news/' + n._id"
+          v-for="n in news"
+          :key="n._id"
+          :title="n.title"
+        >
+          <li>
+            <div class="content">
+              <h3>{{ n.title }}</h3>
+              <p>{{ n.subtitle }}</p>
+            </div>
+            <div class="img">
+              <img
+                :src="n.img || '/images/general/logo.jpg'"
+                :alt="n.img ? n.title : 'الترجمان'"
+              />
+            </div>
+          </li>
+        </nuxt-link>
+      </ul>
+    </div>
+
+    <div class="left">Ads here</div>
   </div>
 </template>
 
@@ -33,46 +37,82 @@ export default {
 
 <style lang="scss" scoped>
 .__news {
-  ul {
-    padding: 0;
-    li {
-      position: relative;
-      margin-bottom: 10px;
-      list-style: none;
+  display: flex;
+  @media (max-width: 653px) {
+    flex-direction: column;
+  }
 
-      overflow: hidden;
-      aspect-ratio: 16 / 9;
+  .right {
+    flex: 1;
+  }
+  .left {
+    width: 320px;
 
-      img {
-        width: 100%;
-        height: 100%;
-        object-fit: cover;
+    @media (max-width: 1020px) {
+      width: 200px;
+    }
+    @media (max-width: 653px) {
+      width: 100%;
+    }
+  }
+
+  .right {
+    ul {
+      padding: 20px;
+      color: #333;
+
+      a {
+        color: inherit;
+        text-decoration: none;
       }
 
-      &:hover {
-        img {
-          transition: 0.3s;
-          filter: blur(3px);
-          opacity: 0.9;
-        }
+      li {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+          rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+        background: white;
+        // border: 2px solid #122851;
+        border-radius: 20px;
+        position: relative;
+        margin-bottom: 50px;
+        list-style: none;
+        display: flex;
+        transition: 0.2s;
+        padding: 20px;
+        top: 20px;
+
         .content {
-          opacity: 1;
-          transition: 0.3s;
-        }
-      }
+          flex: 1;
 
-      .content {
-        inset: 0;
-        opacity: 0;
-        // top: auto;
-        position: absolute;
-        color: rgb(88, 247, 14);
-        background: rgba(170, 67, 67, 0.533);
-        display: grid;
-        place-items: center;
-        background-image: linear-gradient(transparent, rgb(53, 96, 124));
-        padding: 10px;
-        z-index: 2;
+          h3 {
+            margin: 0;
+            font-size: 1.5em;
+          }
+        }
+        .img {
+          width: 120px;
+
+          // border-radius: 10px;
+          overflow: hidden;
+          position: relative;
+          top: -50px;
+          transition: inherit;
+
+          img {
+            display: block;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+          }
+        }
+
+        &:hover {
+          text-decoration: underline;
+
+          top: 0;
+          .img {
+            top: 0;
+          }
+        }
       }
     }
   }
