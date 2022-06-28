@@ -8,13 +8,13 @@
       </div>
       <No_items v-else />
     </div>
-    <Loadnig v-else />
+    <loading v-else />
   </div>
 </template>
 
 <script>
 // components
-import Loadnig from "~/components/loadnig";
+import loading from "~/components/loading";
 import Search_subjects from "~/components/search/subject";
 import No_items from "~/components/search/no_items";
 
@@ -26,7 +26,7 @@ export default {
     });
     return { subjects };
   },
-  components: { Loadnig, Search_subjects, No_items },
+  components: { loading, Search_subjects, No_items },
   head() {
     return {
       title: "بحث " + this.$route.params.query,

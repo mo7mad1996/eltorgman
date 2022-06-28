@@ -12,17 +12,18 @@ export default {
 
 <style lang="scss" scoped>
 .__loading {
-  height: 250px;
+  height: auto;
   display: grid;
   place-items: center;
-  background: #fff;
+  background: transparent;
+
   #loader {
     display: block;
-    width: 76px;
-    height: 76px;
+    width: 1.5em;
+    height: 1.5em;
     border-radius: 50%;
-    border: 2px solid transparent;
-    border-top-color: #271347;
+    border: 0.1em solid transparent;
+    border-top-color: #d0c6e1;
     animation: spin 2s linear infinite;
 
     &::after,
@@ -35,11 +36,11 @@ export default {
     }
     &::before {
       animation: spin 3s linear infinite;
-      inset: 8px;
+      inset: 0.2em;
     }
 
     &::after {
-      inset: 17px;
+      inset: 0.4em;
       animation: spin 1.5s linear infinite;
     }
   }

@@ -5,7 +5,6 @@ module.exports = (router) => {
   });
 
   router.get("/auth/user", (req, res) => {
-    console.log(req.body, "action user");
     res.send({
       user: {
         id: "baby"
@@ -13,7 +12,6 @@ module.exports = (router) => {
     });
   });
   router.get("/auth/logout", (req, res) => {
-    console.log(req.body, "action user");
     res.json({
       user: "baby"
     });

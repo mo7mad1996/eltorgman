@@ -4,19 +4,12 @@
 
     <div class="continer">
       <!-- <Top_10 /> -->
-      <main class="row">
-        <div class="right">
-          <Top_10 :top_subjects="top_subjects" />
+      <main>
+        <News :news="new_news" />
+        <Top_10 :top_subjects="top_subjects" />
 
-          <!-- <new_content /> -->
-          <New_content :new_subjects="new_subjects" />
-        </div>
-        <div class="left">
-          <h3>الأخبار العاجله::</h3>
-          <News :news="new_news" />
-
-          <h3>الاسعار هنا</h3>
-        </div>
+        <!-- <new_content /> -->
+        <New_content :new_subjects="new_subjects" />
       </main>
 
       <div class="__fast_links">

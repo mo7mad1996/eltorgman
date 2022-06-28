@@ -22,9 +22,6 @@
 export default {
   props: ["single_news"],
   name: "Single_news_component",
-  mounted() {
-    console.log(this.single_news);
-  },
 };
 </script>
 

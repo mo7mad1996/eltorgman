@@ -46,7 +46,10 @@
         </div>
       </article>
 
-      <button class="add" type="submit">إضافة <Save /></button>
+      <button class="add" type="submit" :disabled="loading">
+        <Loading v-if="loading" />
+        <span v-else> إضافة <Save /> </span>
+      </button>
     </form>
   </div>
 </template>
@@ -60,6 +63,7 @@ import Toggle from "~/components/icons/toggle";
 import Delete from "~/components/icons/delete";
 import Save from "~/components/icons/save";
 import Camera from "~/components/icons/camera";
+import Loading from "~/components/loading";
 
 export default {
   name: "Add_news_component",
@@ -69,6 +73,7 @@ export default {
     preview_src: "",
     in_edit: true,
     news: "المحتوى...",
+    loading: false,
   }),
   methods: {
     ...mapActions(["set_alert"]),
@@ -88,39 +93,51 @@ export default {
     add() {
       {
         if (this.title) {
-          let formdata = new FormData();
-          if (Array.from(this.$refs.file.files).length)
+          this.loading = true;
+          if (Array.from(this.$refs.file.files).length) {
+            let formdata = new FormData();
             formdata.append(
               "file",
               this.$refs.file.files[0],
               this.$refs.file.files[0].filename
             );
-          let content = this.$refs.news.innerHTML;
-          formdata.append("content", content);
-          formdata.append("title", this.title);
-          formdata.append("subtitle", this.subtitle);
 
-          this.$axios
-            .$post("/news/add", formdata, {
-              headers: {
-                "Content-Type": "multipart/form-data",
-              },
-            })
-            .then((res) => {
-              if (res.saved) {
-                this.set_alert({ type: "Success", text: "تمت الاضافة" });
-                this.$refs.form.reset();
-                this.title = "";
-                this.preview_img = "";
-                this.news = "";
-                this.subtitle = "";
-              } else this.set_alert({ type: "Error", text: res.data._message });
-            });
+            this.$axios
+              .$post("https://filesaver3.herokuapp.com/", formdata, {
+                headers: {
+                  "Content-Type": "multipart/form-data",
+                },
+              })
+              .then(({ file }) => this.save(file));
+          } else {
+            this.save("");
+          }
         } else this.set_alert({ type: "Error", text: "تأكد من عنوان الخبر" });
       }
     },
+    save(img) {
+      let content = this.$refs.news.innerHTML;
+
+      this.$axios
+        .$post("/news/add", {
+          content,
+          img,
+          title: this.title,
+          subtitle: this.subtitle,
+        })
+        .then((data) => {
+          this.set_alert({ type: "Success", text: "تمت الاضافة" });
+          this.$refs.form.reset();
+          this.title = "";
+          this.preview_img = "";
+          this.news = "";
+          this.subtitle = "";
+
+          this.loading = false;
+        });
+    },
   },
-  components: { Controlers, Toggle, Delete, Save, Camera },
+  components: { Controlers, Toggle, Delete, Save, Camera, Loading },
 };
 </script>
 

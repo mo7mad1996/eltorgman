@@ -35,7 +35,6 @@ export default {
       const start = text.indexOf('<img src="') + 10;
       const end = text.indexOf('"', start + 1);
       let img = text.substring(start, end);
-      console.log(start);
 
       if (start < 10) img = "/images/general/logo.jpg";
       return Object.assign(subject, { img });

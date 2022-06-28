@@ -8,16 +8,16 @@
         :title="n.title"
       >
         <li>
-          <div class="content">
-            <div class="text-center">
-              <h3>{{ n.title }}</h3>
-              <p>{{ n.subtitle }}</p>
-            </div>
+          <div class="img">
+            <img
+              :src="n.img || '/images/general/logo.jpg'"
+              :alt="n.img ? n.title : 'الترجمان'"
+            />
           </div>
-          <img
-            :src="n.img || '/images/general/logo.jpg'"
-            :alt="n.img ? n.title : 'الترجمان'"
-          />
+          <div class="content">
+            <h3>{{ n.title }}</h3>
+            <p>{{ n.subtitle }}</p>
+          </div>
         </li>
       </nuxt-link>
     </ul>

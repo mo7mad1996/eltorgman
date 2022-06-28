@@ -32,6 +32,10 @@ module.exports = {
         name: "format-detection",
         content: "telephone=no"
       },
+      {
+        name: "theme-color",
+        content: "#122851"
+      },
     ],
     link: [{
       rel: "icon",
@@ -104,7 +108,7 @@ module.exports = {
   fontawesome: {
     component: 'Fa',
     suffix: false,
-    
+
     icons: {
       solid: true,
       brands: true,
