@@ -34,6 +34,7 @@ require("./models/user");
 require("./models/subject");
 require("./models/news");
 require("./models/price");
+require("./models/contact");
 
 // ..:: middlewares ::..
 require("./middlewares")(app);

@@ -10,3 +10,4 @@ require("./auth")(router);
 require("./news")(router);
 require("./project")(router);
 require("./price")(router);
+require("./contact")(router);

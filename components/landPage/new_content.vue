@@ -41,7 +41,7 @@ export default {
 <style lang="scss" scoped>
 section {
   padding: 10px;
-  margin: 30px 0;
+  margin-top: 30px;
 
   ._subject {
     border: 1.6px solid #112026;

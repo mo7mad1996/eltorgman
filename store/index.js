@@ -6,12 +6,14 @@ const state = () => ({
     type: "",
     active: false,
   },
-  search: ''
+  search: '',
+  unread: false
 });
 const getters = {
   alert: (state) => state.alert,
   subject_sections: (state) => state.subject_sections,
   search: (state) => state.search,
+  unread: state => state.unread
 };
 const mutations = {
   close_alert(state) {
@@ -31,6 +33,9 @@ const mutations = {
   set_search(state, data) {
     state.search = data;
   },
+  set_unread(state, data) {
+    state.unread = data
+  }
 };
 const actions = {
   set_alert({
@@ -44,6 +49,11 @@ const actions = {
       timeout = setTimeout((_) => commit("close_alert"), 10e3);
     }, 30)
   },
+  set_unread({
+    commit
+  }, data) {
+    commit('set_unread', data)
+  }
 };
 
 export default {

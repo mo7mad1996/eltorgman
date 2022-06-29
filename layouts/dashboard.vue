@@ -10,8 +10,12 @@
 
       <nav class="links">
         <ul>
-          <li v-for="link in links" :key="link.to">
-            <nuxt-link :to="link.to" class="active">
+          <li v-for="(link, n) in links" :key="link.to">
+            <nuxt-link
+              :to="link.to"
+              class="active"
+              :class="{ unread: unread && n == 3 }"
+            >
               <fa :icon="link.icon" class="icon" />
               <span>
                 {{ link.title }}
@@ -33,9 +37,16 @@
 <script>
 // components
 import Alert from "~/components/layouts/Alert";
+// vuex
+import { mapActions, mapGetters } from "vuex";
 
 export default {
   name: "dashboard",
+  mounted() {
+    this.$axios.$get("/contact/unread").then((data) => this.set_unread(data));
+  },
+  methods: mapActions(["set_unread"]),
+  computed: mapGetters(["unread"]),
   data: () => ({
     links: [
       {
@@ -74,6 +85,22 @@ a {
   color: inherit;
   display: block;
   text-decoration: none;
+
+  &.unread {
+    position: relative;
+
+    &::after {
+      content: "";
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      background: #ab1554;
+      position: absolute;
+      top: 50%;
+      right: 0;
+      transform: translateY(-50%);
+    }
+  }
 }
 .__dashboard {
   display: flex;
