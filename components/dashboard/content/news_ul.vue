@@ -34,12 +34,13 @@ export default {
   methods: {
     remove(id) {
       if (confirm("هل انت متأكد من حذف الخبر")) this.$axios;
-      // .$delete(this.content.find((el) => el._id == id).img)
-      // .then((_) =>
       this.$axios
-        .$delete("/news/delete/" + id)
-        .then((_) => this.$emit("remove", id));
-      // );
+        .$delete(this.content.find((el) => el._id == id).img)
+        .then((_) =>
+          this.$axios
+            .$delete("/news/delete/" + id)
+            .then((_) => this.$emit("remove", id))
+        );
     },
   },
 };

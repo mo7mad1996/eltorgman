@@ -38,7 +38,7 @@ export default {
 <style lang="scss" scoped>
 .__news {
   display: flex;
-  @media (max-width: 653px) {
+  @media (max-width: 582px) {
     flex-direction: column;
   }
 
@@ -51,7 +51,7 @@ export default {
     @media (max-width: 1020px) {
       width: 200px;
     }
-    @media (max-width: 653px) {
+    @media (max-width: 582px) {
       width: 100%;
     }
   }
@@ -86,6 +86,10 @@ export default {
           h3 {
             margin: 0;
             font-size: 1.5em;
+
+            @media (max-width: 120px) {
+              font-size: 1.25em;
+            }
           }
         }
         .img {
