@@ -1,6 +1,5 @@
 <template>
-  <section>
-    <h2>افضل {{ subjects.length }} مواضيع::</h2>
+  <section v-if="subjects.length" class="continer">
     <main class="__subjects">
       <nuxt-link
         :to="`/subject/${subject._id}`"
@@ -16,13 +15,18 @@
 
         <div class="details">
           <h2>{{ subject.title }}</h2>
+          <h4>{{ subject.subtitle }}</h4>
         </div>
       </nuxt-link>
     </main>
   </section>
+
+  <No_items v-else type="مواضيع" />
 </template>
 
 <script>
+import No_items from "~/components/search/no_items";
+
 export default {
   name: "Top_10",
   props: ["top_subjects"],
@@ -40,88 +44,70 @@ export default {
       return Object.assign(subject, { img });
     });
   },
+  components: { No_items },
 };
 </script>
 
 <style lang="scss" scoped>
 .__subjects {
-  display: grid;
-  grid-template-areas:
-    "A0 A0 A0 A1"
-    "A0 A0 A0 A2"
-    "A0 A0 A0 A3"
-    "A5 A5 A4 A4"
-    "A5 A5 A4 A4"
-    "A6 A7 A8 A9";
-  grid-template-rows: repeat(7, 100px);
-  grid-template-columns: repeat(4, 1fr);
-  gap: 5px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
 
   a {
     position: relative;
-    color: white;
+    height: 320px;
+    border-radius: 10px;
+    overflow: hidden;
+    min-height: 140px;
+    min-width: 100px;
+    width: 210px;
+    text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
+      rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
 
-    .details {
-      inset: 0;
-      position: absolute;
-      display: grid;
-      place-items: center;
-      background: linear-gradient(
-        rgba(101, 19, 142, 0.8),
-        rgba(18, 18, 118, 0.8)
-      );
-      z-index: 2;
-      transition: 0.3s;
-      opacity: 0;
-
-      h2 {
-        font-size: 16px;
-        margin: 0;
-      }
+    @media (max-width: 633px) {
+      font-size: max(1vw, 12px);
+      width: 30%;
+      height: 50vw;
     }
 
     .img {
-      inset: 0;
-      position: absolute;
-      z-index: 1;
+      background: #eee;
+      height: 100%;
+      position: relative;
 
       img {
         width: 100%;
         height: 100%;
-        transition: 0.3s;
         object-fit: cover;
       }
-    }
 
-    &:hover {
-      .details {
-        opacity: 1;
-      }
-      img {
-        object-fit: contain;
-        transform: scale(0.7);
+      &::after {
+        content: "";
+        background: #b1681977;
+        position: absolute;
+        inset: 0;
+        z-index: 2;
       }
     }
 
-    &:nth-of-type(1),
-    &:nth-of-type(5),
-    &:nth-of-type(6) {
-      overflow: hidden;
+    .details {
+      position: absolute;
+      z-index: 2;
+      color: white;
+      bottom: 0;
+      line-height: 1;
+      padding: 0 0.3em;
 
-      .details {
-        display: block;
-        padding: 1em 1.3em;
-        top: auto;
-        bottom: -100%;
+      h2 {
+        margin: 0;
+        font-size: 1.3em;
       }
-      &:hover {
-        .details {
-          bottom: 0;
-        }
-        img {
-          object-fit: cover;
-          transform: scale(1);
-        }
+      h4 {
+        margin-top: 10px;
+        font-size: 1em;
       }
     }
   }

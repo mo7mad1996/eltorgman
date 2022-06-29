@@ -1,5 +1,5 @@
 <template>
-  <div class="__news">
+  <div class="__news" v-if="news.length">
     <div class="right">
       <ul>
         <nuxt-link
@@ -26,12 +26,17 @@
 
     <div class="left">Ads here</div>
   </div>
+
+  <No_items v-else type="أخبار بعد" />
 </template>
 
 <script>
+import No_items from "~/components/search/no_items";
+
 export default {
   props: ["news"],
   name: "News",
+  components: { No_items },
 };
 </script>
 

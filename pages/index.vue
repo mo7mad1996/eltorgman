@@ -11,11 +11,6 @@
         <!-- <new_content /> -->
         <New_content :new_subjects="new_subjects" />
       </main>
-
-      <div class="__fast_links">
-        <nuxt-link to="/login">Login</nuxt-link>
-        <nuxt-link to="/dashboard">dashboard</nuxt-link>
-      </div>
     </div>
   </div>
 </template>
@@ -55,7 +50,10 @@ export default {
 
 <style lang="scss" scoped>
 .__land_page {
-  background: #eee;
+  background: rgba(255, 255, 255, 0.73);
+  background-image: url("/images/general/bg.webp");
+  background-size: 400px;
+  background-blend-mode: soft-light;
 
   .row {
     display: flex;

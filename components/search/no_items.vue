@@ -3,12 +3,18 @@
     <div class="icon">
       <fa icon="circle-radiation" />
     </div>
-    <div class="brown">للاسف لا توجد عناصر.</div>
+    <div class="brown">للاسف لا توجد {{ type || "عناصر" }}.</div>
   </div>
 </template>
 
 <script>
 export default {
+  props: {
+    type: {
+      require: false,
+      default: "",
+    },
+  },
   name: "No_items",
 };
 </script>

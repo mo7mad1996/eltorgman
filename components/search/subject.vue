@@ -17,6 +17,7 @@
 import Single_item from "~/components/search/single_item";
 import No_items from "~/components/search/no_items";
 
+
 export default {
   name: "Search_subjects",
   props: ["subjects"],
