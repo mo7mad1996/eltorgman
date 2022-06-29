@@ -30,6 +30,7 @@ export default {
       this.loading = true;
       this.$axios.$delete("/contact/" + id).then((_) => {
         this.loading = false;
+
         this.$emit("remove", this.msg);
       });
     },
