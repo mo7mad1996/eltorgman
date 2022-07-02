@@ -8,10 +8,12 @@ const secret = 'secret'
 
 
 module.exports = (router) => {
-  router.get('/auth/add_admin', (req, res) => {
+  router.get('/auth/add_admin', async (req, res) => {
+    const salt = await becrypt.genSalt(10)
+    const password = await becrypt.hash('admin', salt)
     new User({
       username: 'admin',
-      password: 'admin',
+      password,
       name: 'Mohamed'
     }).save().then(_ => res.end('done'))
   })
