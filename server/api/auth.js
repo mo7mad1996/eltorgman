@@ -35,7 +35,7 @@ module.exports = (router) => {
       _id: user._id
     }, secret)
 
-    User.findByIdAndUpdate(user._id, {
+    await User.findByIdAndUpdate(user._id, {
       lastLogin: Date.now()
     })
 
