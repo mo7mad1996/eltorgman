@@ -24,7 +24,7 @@
           </li>
         </ul>
       </nav>
-      <nuxt-link to="/logout" class="logout">خروج</nuxt-link>
+      <button @click="$auth.logout()" class="logout">خروج</button>
     </aside>
     <main>
       <nuxt />
@@ -47,6 +47,8 @@ export default {
   },
   methods: mapActions(["set_unread"]),
   computed: mapGetters(["unread"]),
+  middleware: "auth",
+
   data: () => ({
     links: [
       {
@@ -185,6 +187,7 @@ a {
       text-align: center;
       margin: 20px;
       border-radius: 7px;
+      cursor: pointer;
 
       &:hover {
         filter: brightness(80%);

@@ -10,7 +10,6 @@
 <script>
 export default {
   name: "DashbordHomePage",
-  middleware: "auth",
   layout: "dashboard",
 };
 </script>

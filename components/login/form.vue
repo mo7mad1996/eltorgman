@@ -7,7 +7,7 @@
       </div>
       <div class="input_field">
         <label for="username">المستخدم</label>
-        <input v-model="user.username" required id="username" />
+        <input v-model="user.username" required id="username" autofocus />
       </div>
       <div class="input_field">
         <label for="password">كلمة المرور</label>
@@ -26,19 +26,24 @@ export default {
   name: "LoginForm",
   data: () => ({
     user: {
-      username: "",
-      password: "",
+      username: "admin",
+      password: "admin",
     },
   }),
+  mounted() {},
   methods: {
     ...mapActions(["set_alert"]),
-    login() {
+    async login() {
       if (!this.user.username)
         this.set_alert({ type: "error", text: "تاكد من توضيح المستخدم" });
-      else if (!this.user.username)
+      else if (!this.user.password)
         this.set_alert({ type: "error", text: "تأكد من إدخال كلمة المرور" });
       else {
-        this.$auth.loginWith("local", this.user);
+        try {
+          await this.$auth.loginWith("local", { data: this.user });
+        } catch ({ response }) {
+          this.set_alert({ text: response.data, type: "Error" });
+        }
       }
     },
   },

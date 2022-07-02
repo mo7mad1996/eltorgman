@@ -64,7 +64,7 @@ module.exports = {
   modules: [
     // https://go.nuxtjs.dev/axios
     "@nuxtjs/axios",
-    "@nuxtjs/auth-next",
+    "@nuxtjs/auth",
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -73,36 +73,24 @@ module.exports = {
     baseURL: dev ?
       `http://localhost:${port}/api` : "https://eltorgoman.herokuapp.com/api",
   },
-
   auth: {
     strategies: {
       local: {
-        token: {
-          required: false,
-          type: false,
-        },
+        tokenType: '',
         endpoints: {
-          user: {
-            url: "/auth/user",
-            method: "get"
-          },
           login: {
-            url: "/auth/login",
-            method: "post"
+            url: '/auth/login',
+            method: 'post',
+            propertyName: 'token'
           },
           logout: {
-            url: "/auth/logout",
-            method: "delete"
+            url: '/auth/logout',
+            method: 'delete'
           },
-        },
-      },
-    },
-    redirect: {
-      login: "/login",
-      logout: "/",
-      callback: "/dashboard",
-      home: "/dashboard",
-    },
+          user: false
+        }
+      }
+    }
   },
 
   fontawesome: {
