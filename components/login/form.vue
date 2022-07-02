@@ -26,8 +26,8 @@ export default {
   name: "LoginForm",
   data: () => ({
     user: {
-      username: "admin",
-      password: "admin",
+      username: "",
+      password: "",
     },
   }),
   mounted() {},
@@ -40,7 +40,15 @@ export default {
         this.set_alert({ type: "error", text: "تأكد من إدخال كلمة المرور" });
       else {
         try {
-          await this.$auth.loginWith("local", { data: this.user });
+          const { data } = await this.$auth.loginWith("local", {
+            data: this.user,
+          });
+          this.set_alert({
+            type: "success",
+            text:
+              "مرحباً بعدوتك اخر دخول كان في " +
+              new Date(data.lastLogin).toLocaleString("ar-EG"),
+          });
         } catch ({ response }) {
           this.set_alert({ text: response.data, type: "Error" });
         }

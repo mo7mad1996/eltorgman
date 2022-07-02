@@ -15,6 +15,10 @@ const user = new Schema({
     required: true,
     type: String,
   },
+  lastLogin: {
+    type: Date,
+    default: Date.now
+  }
 });
 
 mongoose.model("user", user);
