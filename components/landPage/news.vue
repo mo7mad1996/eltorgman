@@ -15,7 +15,7 @@
             </div>
             <div class="img">
               <img
-                :src="n.img || '/images/general/logo.jpg'"
+                :src="n.img || '/images/general/logo.svg'"
                 :alt="n.img ? n.title : 'الترجمان'"
               />
             </div>

@@ -4,7 +4,7 @@
       <div class="row">
         <nuxt-link to="/" class="logo" title="الترجمان">
           <!-- عاوز يتعدل -->
-          <img src="/images/general/logo.jpg" alt="الترجمان" />
+          <img src="/images/general/logo.svg" alt="الترجمان" />
         </nuxt-link>
 
         <div class="search-bar">

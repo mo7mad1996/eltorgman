@@ -38,7 +38,7 @@ marquee {
   span:not(:last-of-type)::after {
     content: "";
     margin: 0 10px;
-    background-image: url("/images/general/logo.jpg");
+    background-image: url("/images/general/logo.svg");
     width: 40px;
     display: inline-block;
     height: 1em;

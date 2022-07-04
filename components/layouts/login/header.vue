@@ -1,7 +1,7 @@
 <template>
   <header>
     <nuxt-link to="/" class="__home_link">
-      <img src="/images/general/logo.png" alt="الترجمان" class="logo" />
+      <img src="/images/general/logo.svg" alt="الترجمان" class="logo" />
       <span>الترجمان</span>
     </nuxt-link>
   </header>

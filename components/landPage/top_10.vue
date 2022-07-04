@@ -40,7 +40,7 @@ export default {
       const end = text.indexOf('"', start + 1);
       let img = text.substring(start, end);
 
-      if (start < 10) img = "/images/general/logo.jpg";
+      if (start < 10) img = "/images/general/logo.svg";
       return Object.assign(subject, { img });
     });
   },
