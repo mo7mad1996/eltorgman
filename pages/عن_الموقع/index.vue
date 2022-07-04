@@ -156,7 +156,7 @@ export default {
       height: 400px;
       object-fit: cover;
     }
-    @media (max-width: 360px) {
+    @media (max-width: 620px) {
       display: block;
       img {
         width: 100%;
