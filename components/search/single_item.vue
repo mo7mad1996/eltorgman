@@ -39,7 +39,7 @@ export default {
 
       let src = text.substring(start, end);
 
-      if (start < 10) return "/images/general/logo.jpg";
+      if (start < 10) return "/images/general/logo.svg";
       return src;
     },
   },

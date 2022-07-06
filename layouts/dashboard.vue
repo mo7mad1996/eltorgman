@@ -3,7 +3,7 @@
     <aside>
       <nuxt-link to="/" class="logo">
         <div class="content">
-          <img src="/images/general/logo.png" alt="الترجمان" />
+          <img src="/images/general/logo.svg" alt="الترجمان" />
           <span>الترجمان</span>
         </div>
       </nuxt-link>

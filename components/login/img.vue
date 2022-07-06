@@ -1,6 +1,6 @@
 <template>
   <div class="img-corner">
-    <img src="/images/general/logo.png" />
+    <img src="/images/general/logo.svg" />
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
   <div class="__dashboard">
-    <img src="/images/general/logo.png" alt="الترجمان" />
+    <img src="/images/general/logo.svg" alt="الترجمان" />
 
     <h1 class="brown">الترجمان</h1>
     <span class="gray"> مقالات وأخبار حصريه، مميزه، جديده.</span>

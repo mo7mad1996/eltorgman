@@ -3,7 +3,6 @@
     <div class="continer">
       <div class="row">
         <nuxt-link to="/" class="logo" title="الترجمان">
-          <!-- عاوز يتعدل -->
           <img src="/images/general/logo.svg" alt="الترجمان" />
         </nuxt-link>
 
@@ -110,8 +109,10 @@ header {
     gap: 20px;
 
     .logo {
+      height: 50px;
+
       img {
-        max-height: 50px;
+        height: 100%;
       }
       &::after {
         content: "";
