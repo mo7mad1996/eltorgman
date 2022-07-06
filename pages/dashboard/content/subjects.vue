@@ -28,7 +28,7 @@ import { mapActions } from "vuex";
 
 export default {
   layout: "dashboard",
-
+  head: { title: "المواضيع" },
   async asyncData({ $axios }) {
     const subjects = await $axios.$get("/subjects");
     return { subjects };

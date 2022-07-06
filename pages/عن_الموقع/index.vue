@@ -1,5 +1,5 @@
 <template>
-  <div class="__about_us">
+  <div class="__about_us" ref="container">
     <h1>الترجمان</h1>
     <div class="img_continer">
       <img alt="الترجمان" src="/images/general/about/index.png" />
@@ -65,12 +65,30 @@
       <nuxt-link to="/">الترجمان</nuxt-link> &copy;
       {{ new Date().getFullYear() }} .
     </footer>
+
+    <div class="particles">
+      <div class="Circle" ref="Circle_1"></div>
+      <div class="Square"></div>
+    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "About_us_page",
+
+  mounted() {
+    const anmations = [
+      this.$refs.Circle_1,
+      this.$refs.Circle_2,
+      this.$refs.Circle_1,
+    ];
+    console.log(this.$refs.Circle_1);
+    this.$refs.Circle_1.style.top =
+      this.$refs.container.getClientRects()[0].height * Math.random() + "px";
+    this.$refs.Circle_1.style.left =
+      this.$refs.container.getClientRects()[0].width * Math.random() + "px";
+  },
 };
 </script>
 
@@ -156,14 +174,17 @@ export default {
       height: 400px;
       object-fit: cover;
     }
+    .data {
+      padding: 10px;
+      width: 50%;
+    }
+
     @media (max-width: 620px) {
       display: block;
+      .data,
       img {
         width: 100%;
       }
-    }
-    .data {
-      padding: 10px;
     }
   }
 
@@ -178,6 +199,19 @@ export default {
 
   footer {
     padding: 2em 0;
+  }
+
+  .particles * {
+    position: absolute;
+    pointer-events: none;
+    z-index: 6;
+
+    &.Circle {
+      height: 50px;
+      width: 50px;
+      border-radius: 50px;
+      border: 5px solid #123871;
+    }
   }
 }
 </style>

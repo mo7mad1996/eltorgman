@@ -23,7 +23,7 @@
 <script>
 // compoenets
 import News_ul from "~/components/dashboard/content/news_ul";
-import No_items from "../../../components/search/no_items.vue";
+import No_items from "~/components/search/no_items.vue";
 // vuex
 import { mapActions } from "vuex";
 

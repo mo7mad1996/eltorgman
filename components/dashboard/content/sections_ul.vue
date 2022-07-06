@@ -70,12 +70,12 @@ export default {
     }
   }
   .subject {
-    background-image: linear-gradient(-90deg, #b05b94, #5352ed);
+    background: #b1a2c6;
+    // background-image: linear-gradient(-90deg, #b05b94, #5352ed);
     padding: 10px;
+    border-right: 10px solid #ab1554;
     gap: 10px;
-    box-shadow: rgba(0, 0, 0, 0.05) 0px 6px 24px 0px, #ff4757 0px 0px 0px 1px;
     margin-bottom: 10px;
-    border-radius: 10px;
     line-height: 1;
     display: flex;
 
@@ -113,7 +113,6 @@ export default {
 
     .buttons .btn {
       color: white;
-      border: none;
       background: none;
       cursor: pointer;
       padding: 5px 10px;
@@ -127,6 +126,10 @@ export default {
         border: 1px solid white;
         background: #ffffff26;
       }
+    }
+
+    .gray {
+      color: gray;
     }
   }
 }
