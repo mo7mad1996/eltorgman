@@ -20,7 +20,7 @@
             <fa icon="trash" />
           </button>
           <nuxt-link
-            :to="'/dashboard/edit/' + subject._id"
+            :to="'/dashboard/edit/subject/' + subject._id"
             class="btn"
             @click="remove(subject._id)"
             title="تعديل"
@@ -71,7 +71,9 @@ export default {
   }
   .subject {
     background: #b1a2c6;
-    // background-image: linear-gradient(-90deg, #b05b94, #5352ed);
+
+    background-image: linear-gradient(-90deg, #b05b94, #5352ed);
+    background-image: linear-gradient(#3c5ab2, #8880c9);
     padding: 10px;
     border-right: 10px solid #ab1554;
     gap: 10px;
@@ -126,10 +128,6 @@ export default {
         border: 1px solid white;
         background: #ffffff26;
       }
-    }
-
-    .gray {
-      color: gray;
     }
   }
 }

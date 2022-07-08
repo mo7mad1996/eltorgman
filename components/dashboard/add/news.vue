@@ -18,7 +18,6 @@
           <img v-if="preview_src" ref="preview_src" :src="preview_src" />
           <div v-else class="text-center">
             <Camera />
-            <b>أضف صورة الخبر</b>
           </div>
         </label>
         <input id="file" type="file" ref="file" @change="preview_img" />
@@ -48,7 +47,7 @@
 
       <button class="add" type="submit" :disabled="loading">
         <Loading v-if="loading" />
-        <span v-else> إضافة <Save /> </span>
+        <span v-else> {{ item ? "تعديل" : "إضافه" }} <Save /> </span>
       </button>
     </form>
   </div>
@@ -67,14 +66,23 @@ import Loading from "~/components/loading";
 
 export default {
   name: "Add_news_component",
+  props: { item: { require: false } },
   data: () => ({
     title: "",
     subtitle: "",
     preview_src: "",
     in_edit: true,
-    news: "المحتوى...",
+    news: "<div> الخبر</div>",
     loading: false,
   }),
+  mounted() {
+    if (this.item) {
+      this.title = this.item.title;
+      this.subtitle = this.item.subtitle;
+      this.preview_src = this.item.img;
+      this.news = this.item.content;
+    }
+  },
   methods: {
     ...mapActions(["set_alert"]),
     preview_img() {
@@ -90,6 +98,7 @@ export default {
       this.$refs.file.value = "";
       this.preview_src = "";
     },
+
     add() {
       {
         if (this.title) {
@@ -117,15 +126,27 @@ export default {
     },
     save(img) {
       let content = this.$refs.news.innerHTML;
-
-      this.$axios
-        .$post("/news/add", {
-          content,
-          img,
-          title: this.title,
-          subtitle: this.subtitle,
-        })
-        .then((data) => {
+      let news = {
+        content,
+        img,
+        title: this.title,
+        subtitle: this.subtitle,
+      };
+      if (this.item) {
+        if (!img) news.img = this.item.img;
+        this.$axios
+          .$put("/news/update/" + this.item._id, news)
+          .then((_) => {
+            // go back
+            this.$router.go(-1);
+            this.set_alert({ type: "success", text: "تم تعديل الخبر" });
+          })
+          .catch(() => {
+            this.loading = false;
+            this.set_alert({ type: "error", text: "تعذر تعديل الخبر" });
+          });
+      } else {
+        this.$axios.$post("/news/add", news).then((data) => {
           this.set_alert({ type: "Success", text: "تمت الاضافة" });
           this.$refs.form.reset();
           this.title = "";
@@ -135,6 +156,7 @@ export default {
 
           this.loading = false;
         });
+      }
     },
   },
   components: { Controlers, Toggle, Delete, Save, Camera, Loading },

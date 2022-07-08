@@ -18,7 +18,11 @@
           <button class="btn" title="حدف" @click="remove(single_news._id)">
             <fa icon="trash" />
           </button>
-          <nuxt-link class="btn" to="/" title="تعديل">
+          <nuxt-link
+            class="btn"
+            :to="'/dashboard/edit/news/' + single_news._id"
+            title="تعديل"
+          >
             <fa icon="pen" />
           </nuxt-link>
         </div>

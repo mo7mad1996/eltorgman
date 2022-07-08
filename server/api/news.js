@@ -19,6 +19,18 @@ module.exports = (router) => {
     new News(req.body).save().then(data => res.json(data))
   });
 
+  router.put('/news/update/:id', (req, res) => {
+    News.findByIdAndUpdate(req.params.id, req.body).then(() => {
+      res.json({
+        done: 'true'
+      })
+    }).catch(err => {
+      res.status(401).json({
+        done: false
+      })
+    })
+  })
+
   router.get("/news/new", (req, res) =>
     News.find()
     .limit(+req.query.limit)

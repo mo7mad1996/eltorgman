@@ -61,7 +61,10 @@
       </div>
     </article>
 
-    <button class="add" @click="add">إضافة <Save /></button>
+    <button class="add" @click="add">
+      <Loading v-if="loading" />
+      <span v-else> {{ article ? "تعديل" : "إضافه" }} <Save /> </span>
+    </button>
   </div>
 </template>
 
@@ -73,9 +76,15 @@ import { mapActions, mapGetters } from "vuex";
 import Controles from "../components/controlers";
 import Toggle from "~/components/icons/toggle";
 import Save from "~/components/icons/save";
+import Loading from "~/components/loading";
 
 export default {
   name: "GET_artical",
+  props: {
+    article: {
+      require: false,
+    },
+  },
   data: () => ({
     in_edit: true,
     subject: {
@@ -86,9 +95,16 @@ export default {
       key_words: [],
     },
     key_word: "",
+    loading: false,
   }),
   computed: mapGetters(["subject_sections"]),
-  components: { Controles, Toggle, Save },
+  components: { Controles, Toggle, Save, Loading },
+  mounted() {
+    if (this.article) {
+      this.subject = this.article;
+      this.subject.artcals = this.article.content;
+    }
+  },
   methods: {
     ...mapActions(["set_alert"]),
     remove(n) {
@@ -106,14 +122,30 @@ export default {
         key_words: this.subject.key_words,
       };
       if (this.subject.title) {
-        this.$axios.$post("/add/project", project).then((res) => {
-          if (res.saved) {
-            this.set_alert({ text: "تم حفظ الموضوع", type: "Success" });
-            this.$refs.project.innerHTML = "<div>أضف مقالة جديده</div>";
-            this.subject.title = "";
-            this.subject.key_words = [];
-          }
-        });
+        this.loading = false;
+        if (this.article) {
+          this.$axios
+            .$put("/update/subject/" + this.article._id, project)
+            .then(() => {
+              this.set_alert({ type: "success", text: "تم تعديل الموضوع" });
+              // go back
+              this.$router.go(-1);
+            })
+            .catch(() => {
+              this.loading = false;
+              this.set_alert({ type: "error", text: "تعذر تعديل الموضوع" });
+            });
+        } else {
+          this.$axios.$post("/add/project", project).then((res) => {
+            if (res.saved) {
+              this.set_alert({ text: "تم حفظ الموضوع", type: "Success" });
+              this.$refs.project.innerHTML = "<div>أضف مقالة جديده</div>";
+              this.subject.title = "";
+              this.subject.key_words = [];
+              this.loading = false;
+            }
+          });
+        }
       } else {
         this.set_alert({ type: "Error", text: "تاكد من كتابة عنوان المقال" });
       }

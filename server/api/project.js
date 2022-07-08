@@ -40,18 +40,29 @@ module.exports = (router) => {
       .catch((err) => res.json(err));
   });
 
-  router.post("/add/project", (req, res) =>
-    new Subject(req.body)
-    .save()
-    .then((data) => res.json({
-      saved: true,
-      data
-    }))
-    .catch((err) => res.json({
-      saved: false,
-      data: err
-    }))
-  );
+  router.put("/update/subject/:id", (req, res) => {
+    Subject
+      .findByIdAndUpdate(req.params.id, req.body)
+      .then(data => res.json({
+        done: true
+      }))
+      .catch(err => res.status(401).json({
+        done: false
+      }))
+
+    router.post("/add/project", (req, res) =>
+      new Subject(req.body)
+      .save()
+      .then((data) => res.json({
+        saved: true,
+        data
+      }))
+      .catch((err) => res.json({
+        saved: false,
+        data: err
+      }))
+    )
+  })
 
   router.post("/subjects/search", async (req, res) => {
 
@@ -77,7 +88,7 @@ module.exports = (router) => {
     });
 
     res.json(sections)
-  })
+  });
   router.post("/subjects/filter", (req, res) =>
     Subject.find(req.body)
     .then(sections => res.json(sections))
@@ -90,4 +101,4 @@ module.exports = (router) => {
       res.json(subjects)
     )
   );
-};
+}
