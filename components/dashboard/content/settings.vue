@@ -10,7 +10,7 @@
     </div>
     <div class="input_field">
       <label for="newPass">كلمة المرور الدجديده</label>
-      <input v-model="newPass" id="newPass" />
+      <input v-model="newPass" id="newPass" type="password" />
     </div>
 
     <form @submit.prevent="submit" v-if="submited" class="alert">
@@ -19,7 +19,7 @@
 
         <div class="input_field">
           <label for="password">كلمة المرور الحاليه</label>
-          <input v-model="password" id="password" required />
+          <input v-model="password" id="password" required type="password" />
         </div>
 
         <button type="submit">
