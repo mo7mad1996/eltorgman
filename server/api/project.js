@@ -19,6 +19,7 @@ module.exports = (router) => {
     .limit(+req.query.limit)
     .then((subjects) => res.json(subjects))
   );
+
   router.get("/subjects", (req, res) =>
     Subject.find()
     .sort({
@@ -28,44 +29,34 @@ module.exports = (router) => {
     .catch((err) => console.log(err))
   );
 
-  router.get("/single_subject/:id", (req, res) => {
+  router.get("/single_subject/:id", (req, res) =>
     Subject.findById(req.params.id)
-      .then((data) => {
-        Subject.findByIdAndUpdate(req.params.id, {
-          vist: data.vist + 1
-        }).then(
-          (update) => res.json(update)
-        );
-      })
-      .catch((err) => res.json(err));
-  });
+    .then((data) => {
+      Subject.findByIdAndUpdate(req.params.id, {
+        vist: data.vist + 1
+      }).then(
+        (update) => res.json(update)
+      );
+    })
+    .catch((err) => res.json(err)));
 
-  router.put("/update/subject/:id", (req, res) => {
+  router.put("/update/subject/:id", (req, res) =>
     Subject
-      .findByIdAndUpdate(req.params.id, req.body)
-      .then(data => res.json({
-        done: true
-      }))
-      .catch(err => res.status(401).json({
-        done: false
-      }))
+    .findByIdAndUpdate(req.params.id, req.body)
+    .then(data => res.json({
+      done: true
+    }))
+    .catch(err => res.status(401).json({
+      done: false
+    })))
 
-    router.post("/add/project", (req, res) =>
-      new Subject(req.body)
-      .save()
-      .then((data) => res.json({
-        saved: true,
-        data
-      }))
-      .catch((err) => res.json({
-        saved: false,
-        data: err
-      }))
-    )
-  })
+  router.post("/add/article", (req, res) =>
+    new Subject(req.body)
+    .save()
+    .then((data) => res.json(data))
+    .catch((err) => res.status(401).json(err)))
 
   router.post("/subjects/search", async (req, res) => {
-
     const sections = await Subject.find({
       '$or': [{
           title: {
@@ -89,16 +80,14 @@ module.exports = (router) => {
 
     res.json(sections)
   });
+
   router.post("/subjects/filter", (req, res) =>
     Subject.find(req.body)
     .then(sections => res.json(sections))
-    .catch(err => console.log(err))
-  )
+    .catch(err => console.log(err)))
 
 
   router.delete("/subjects/delete/:id", (req, res) =>
     Subject.findByIdAndDelete(req.params.id).then((subjects) =>
-      res.json(subjects)
-    )
-  );
+      res.json(subjects)));
 }

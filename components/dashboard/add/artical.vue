@@ -46,13 +46,13 @@
 
     <article>
       <div class="input_field">
-        <h3 for="project">
+        <h3 for="article">
           الموضوع
           <button @click="in_edit = !in_edit" title="تعديل"><Toggle /></button>
         </h3>
         <p
-          id="project"
-          ref="project"
+          id="article"
+          ref="article"
           :contentEditable="in_edit"
           class="subject"
           :class="in_edit && 'textarea'"
@@ -113,8 +113,8 @@ export default {
       });
     },
     add() {
-      let content = this.$refs.project.innerHTML;
-      let project = {
+      let content = this.$refs.article.innerHTML;
+      let article = {
         title: this.subject.title,
         subtitle: this.subject.subtitle,
         section: this.subject.section,
@@ -125,7 +125,7 @@ export default {
         this.loading = false;
         if (this.article) {
           this.$axios
-            .$put("/update/subject/" + this.article._id, project)
+            .$put("/update/subject/" + this.article._id, article)
             .then(() => {
               this.set_alert({ type: "success", text: "تم تعديل الموضوع" });
               // go back
@@ -136,15 +136,19 @@ export default {
               this.set_alert({ type: "error", text: "تعذر تعديل الموضوع" });
             });
         } else {
-          this.$axios.$post("/add/project", project).then((res) => {
-            if (res.saved) {
+          this.$axios
+            .$post("/add/article", article)
+            .then(() => {
               this.set_alert({ text: "تم حفظ الموضوع", type: "Success" });
-              this.$refs.project.innerHTML = "<div>أضف مقالة جديده</div>";
+              this.$refs.article.innerHTML = "<div>أضف مقالة جديده</div>";
               this.subject.title = "";
               this.subject.key_words = [];
               this.loading = false;
-            }
-          });
+            })
+            .catch((err) => {
+              this.set_alert({ text: "خطأ في الاضافه", type: "error" });
+              console.log(err);
+            });
         }
       } else {
         this.set_alert({ type: "Error", text: "تاكد من كتابة عنوان المقال" });

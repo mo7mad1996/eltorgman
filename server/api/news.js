@@ -20,15 +20,17 @@ module.exports = (router) => {
   });
 
   router.put('/news/update/:id', (req, res) => {
-    News.findByIdAndUpdate(req.params.id, req.body).then(() => {
-      res.json({
-        done: 'true'
+    News.findByIdAndUpdate(req.params.id, req.body)
+      .then(() => {
+        res.json({
+          done: true
+        })
       })
-    }).catch(err => {
-      res.status(401).json({
-        done: false
+      .catch(err => {
+        res.status(401).json({
+          done: false
+        })
       })
-    })
   })
 
   router.get("/news/new", (req, res) =>
