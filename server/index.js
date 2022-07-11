@@ -11,8 +11,7 @@ const {
 const app = express();
 const config = require("../nuxt.config");
 let dev = config.dev;
-// const port = process.env.PORT || 3000;
-// mQykk9iUKw7JEJ8T
+
 const DB_URI = dev ?
   "mongodb://localhost/eltorgman" :
   "mongodb+srv://mo7mad1996:EFPp8t7shAAqKtDB@cluster0.5xltt.mongodb.net/?retryWrites=true&w=majority";

@@ -10,7 +10,7 @@
         <h3>من نحن</h3>
         <p>
           موقع <nuxt-link to="/">الترجمان</nuxt-link> هو موقع عربي مصري بالكامل
-          داعم تماماً للشريعه الإسلاميه.
+          داعم تماماً للشريعه الإسلاميه، تم اطلاقه لاول مره في عام 2022م.
           <br />
           موقع <nuxt-link to="/">الترجمان</nuxt-link> هو اول نتائج تجمع ثلاث
           شباب مصرين قرروا ان يقدموا للمجتمع العربي موقع متخصص لنشر مقالات
@@ -96,7 +96,7 @@ export default {
 @import url("http://fonts.cdnfonts.com/css/aref-ruqaa");
 .__about_us {
   color: #060913;
-  background: #f3f3f3;
+  background: #e9e3ff;
 
   a {
     color: inherit;
