@@ -7,7 +7,7 @@
         :key="subject._id"
         :title="subject.title"
         class="_subject"
-        :style="'grid-area: A' + n"
+        :style="`--color: hsla( ${Math.random() * 360},30% ,50% ,0.5)`"
       >
         <div class="img">
           <img :src="subject.img" />
@@ -86,7 +86,7 @@ export default {
 
       &::after {
         content: "";
-        background: #b1681977;
+        background: var(--color);
         position: absolute;
         inset: 0;
         z-index: 2;

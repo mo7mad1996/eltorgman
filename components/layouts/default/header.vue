@@ -109,7 +109,7 @@ header {
     gap: 20px;
 
     .logo {
-      height: 50px;
+      height: 70px;
 
       img {
         height: 100%;
@@ -158,7 +158,7 @@ header {
 
         @include normal-effect;
 
-        @media (max-width: 1020px) {
+        @media (max-width: 1049px) {
           display: block;
         }
       }
@@ -215,7 +215,7 @@ header {
           }
         }
         &.sections-links {
-          @media (max-width: 1020px) {
+          @media (max-width: 1049px) {
             @include menu;
 
             box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
