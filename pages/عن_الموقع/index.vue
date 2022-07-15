@@ -65,30 +65,12 @@
       <nuxt-link to="/">الترجمان</nuxt-link> &copy;
       {{ new Date().getFullYear() }} .
     </footer>
-
-    <div class="particles">
-      <div class="Circle" ref="Circle_1"></div>
-      <div class="Square"></div>
-    </div>
   </div>
 </template>
 
 <script>
 export default {
   name: "About_us_page",
-
-  mounted() {
-    const anmations = [
-      this.$refs.Circle_1,
-      this.$refs.Circle_2,
-      this.$refs.Circle_1,
-    ];
-    console.log(this.$refs.Circle_1);
-    this.$refs.Circle_1.style.top =
-      this.$refs.container.getClientRects()[0].height * Math.random() + "px";
-    this.$refs.Circle_1.style.left =
-      this.$refs.container.getClientRects()[0].width * Math.random() + "px";
-  },
 };
 </script>
 
@@ -158,7 +140,6 @@ export default {
 
   .person {
     display: flex;
-    margin: 10px 0;
     background: white;
 
     &:nth-of-type(even) {
@@ -199,19 +180,6 @@ export default {
 
   footer {
     padding: 2em 0;
-  }
-
-  .particles * {
-    position: absolute;
-    pointer-events: none;
-    z-index: 6;
-
-    &.Circle {
-      height: 50px;
-      width: 50px;
-      border-radius: 50px;
-      border: 5px solid #123871;
-    }
   }
 }
 </style>

@@ -18,6 +18,7 @@ export default {
     const single_news = await $axios.$get("/single_news/" + params.id);
     return { single_news };
   },
+  head: { title: "تعديل الخبر" },
   components: { Add_news },
 };
 </script>

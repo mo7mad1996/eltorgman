@@ -15,6 +15,7 @@ export default {
     const subject = await $axios.$get("/single_subject/" + params.id);
     return { subject };
   },
+  head: { title: "تعديل الموضوع" },
   layout: "dashboard",
   components: { GET_artical },
 };

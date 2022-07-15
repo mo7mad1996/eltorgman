@@ -14,6 +14,7 @@ export default {
   name: "Add_new_artical",
   components: { GET_artical },
   layout: "dashboard",
+  head: { title: "إضافة موضوع جديد" },
 };
 </script>
 

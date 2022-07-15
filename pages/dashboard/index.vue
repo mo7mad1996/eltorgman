@@ -11,6 +11,7 @@
 export default {
   name: "DashbordHomePage",
   layout: "dashboard",
+  head: { title: "لوحة التحكم" },
 };
 </script>
 

@@ -14,6 +14,7 @@ export default {
   components: {
     Edit_price,
   },
+  head: { title: "الأسعار" },
 };
 </script>
 

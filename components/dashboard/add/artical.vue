@@ -61,7 +61,7 @@
       </div>
     </article>
 
-    <button class="add" @click="add">
+    <button class="add" @click="add" :disabled="loading">
       <Loading v-if="loading" />
       <span v-else> {{ article ? "تعديل" : "إضافه" }} <Save /> </span>
     </button>
@@ -121,8 +121,9 @@ export default {
         content,
         key_words: this.subject.key_words,
       };
+
       if (this.subject.title) {
-        this.loading = false;
+        this.loading = true;
         if (this.article) {
           this.$axios
             .$put("/update/subject/" + this.article._id, article)
@@ -150,6 +151,7 @@ export default {
               console.log(err);
             });
         }
+        this.loading = false;
       } else {
         this.set_alert({ type: "Error", text: "تاكد من كتابة عنوان المقال" });
       }

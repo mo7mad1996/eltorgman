@@ -3,7 +3,7 @@
     <main class="__subjects">
       <nuxt-link
         :to="`/subject/${subject._id}`"
-        v-for="(subject, n) in subjects"
+        v-for="subject in subjects"
         :key="subject._id"
         :title="subject.title"
         class="_subject"
