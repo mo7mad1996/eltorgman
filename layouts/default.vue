@@ -4,7 +4,11 @@
     <Social />
 
     <main>
-      <nuxt />
+      <transition name="moveInUp">
+        <router-view></router-view>
+        <!-- can't set anmation well -->
+        <!-- <nuxt /> -->
+      </transition>
     </main>
 
     <Alert />
@@ -34,7 +38,9 @@ export default {
   min-height: 100vh;
 
   > main {
+    overflow: hidden;
     flex: 1;
+    position: relative;
   }
 }
 </style>

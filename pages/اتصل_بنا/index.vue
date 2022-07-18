@@ -16,14 +16,15 @@ export default {
     Canvas_,
   },
   head: {
-    title: 'اتصل بنا'
-  }
+    title: "اتصل بنا",
+  },
 };
 </script>
 
 <style lang="scss" scoped>
 .__contact_us {
   padding: 100px 12vw 100px;
+  position: relative;
   margin-bottom: -70px;
   background-image: linear-gradient(#f1e6e1, #faf3e1);
 }

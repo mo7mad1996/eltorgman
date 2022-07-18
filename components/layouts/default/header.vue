@@ -100,6 +100,8 @@ export default {
 header {
   background: #122851;
   color: #f0f1f3;
+  z-index: 2;
+  position: relative;
 
   .row {
     display: flex;
