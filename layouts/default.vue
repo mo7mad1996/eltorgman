@@ -4,11 +4,9 @@
     <Social />
 
     <main>
-      <transition name="moveInUp">
-        <router-view></router-view>
+        <!-- <router-view></router-view> -->
         <!-- can't set anmation well -->
-        <!-- <nuxt /> -->
-      </transition>
+        <nuxt />
     </main>
 
     <Alert />

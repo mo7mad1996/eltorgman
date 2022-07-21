@@ -100,7 +100,7 @@ export default {
 header {
   background: #122851;
   color: #f0f1f3;
-  z-index: 2;
+  z-index: 20;
   position: relative;
 
   .row {
