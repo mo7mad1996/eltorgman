@@ -75,6 +75,7 @@ export default {
     @media (max-width: 633px) {
       font-size: max(1vw, 12px);
       width: 100%;
+      max-width: none;
       height: 50vw;
     }
 
