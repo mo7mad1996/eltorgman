@@ -3,7 +3,7 @@
     <div class="continer">
       <div class="row">
         <nuxt-link to="/" class="logo" title="الترجمان">
-          <img src="/images/general/logo.svg" alt="الترجمان" />
+          <img src="/images/general/logo.svg" height="70px" alt="الترجمان" />
         </nuxt-link>
 
         <div class="search-bar">

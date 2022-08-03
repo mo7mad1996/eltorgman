@@ -51,7 +51,7 @@ export default {
 <style lang="scss" scoped>
 .__land_page {
   background: rgba(255, 255, 255, 0.73);
-  background-image: url("/images/general/bg.webp");
+  background-image: url("/images/general/bg.png");
   background-size: 400px;
   background-blend-mode: soft-light;
 

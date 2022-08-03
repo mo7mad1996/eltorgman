@@ -69,7 +69,8 @@ export default {
 
     @media (max-width: 633px) {
       font-size: max(1vw, 12px);
-      width: 30%;
+      flex: 1;
+      min-width: calc(100% / 3);
       height: 50vw;
     }
 
