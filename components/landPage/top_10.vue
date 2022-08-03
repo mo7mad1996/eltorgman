@@ -53,6 +53,10 @@ export default {
   display: flex;
   flex-wrap: wrap;
   gap: 20px;
+  @media (max-width: 350px) {
+    // display: block;
+    flex-direction: column;
+  }
 
   a {
     position: relative;
@@ -60,8 +64,9 @@ export default {
     border-radius: 10px;
     overflow: hidden;
     min-height: 140px;
-    min-width: 100px;
-    width: 210px;
+    min-width: 160px;
+    max-width: 200px;
+    flex: 1;
     text-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
     box-shadow: rgba(255, 255, 255, 0.1) 0px 1px 1px 0px inset,
       rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
@@ -69,8 +74,10 @@ export default {
 
     @media (max-width: 633px) {
       font-size: max(1vw, 12px);
-      flex: 1;
-      min-width: calc(100% / 3);
+      width: 100%;
+      min-width: auto;
+
+      max-width: none;
       height: 50vw;
     }
 
@@ -81,6 +88,7 @@ export default {
 
       img {
         width: 100%;
+        object-fit: cover;
         height: 100%;
         object-fit: cover;
       }
