@@ -26,17 +26,17 @@ export default {
   head: { title: "الرئيسيه" },
   async asyncData({ $axios }) {
     const response = await Promise.all([
-      $axios.$get("/subjects/top?limit=10"),
-      $axios.$get("/subjects/new?limit=10"),
-      $axios.$get("/news/new?limit=4"),
       $axios.$get("/prices"),
+      $axios.$get("/news/new?limit=4"),
+      $axios.$get("/subjects/top?limit=12"),
+      $axios.$get("/subjects/new?limit=10"),
     ]);
 
     return {
-      top_subjects: response[0],
-      new_subjects: response[1],
-      new_news: response[2],
-      prices: response[3],
+      prices: response[0],
+      new_news: response[1],
+      top_subjects: response[2],
+      new_subjects: response[3],
     };
   },
   components: {
