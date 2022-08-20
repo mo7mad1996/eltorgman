@@ -64,6 +64,7 @@ export default {
   list-style: none;
 
   .info {
+    text-align: left;
     font-size: 0.8em;
     .eye {
       margin-bottom: 5px;

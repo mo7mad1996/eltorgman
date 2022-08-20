@@ -1,6 +1,7 @@
 // ..:: packages ::..
 const express = require("express");
 const mongoose = require("mongoose");
+
 // nuxt
 const {
   Nuxt,
@@ -13,8 +14,7 @@ const config = require("../nuxt.config");
 let dev = config.dev;
 
 const DB_URI = dev ?
-  "mongodb://localhost/eltorgman" :
-  "mongodb+srv://mo7mad1996:EFPp8t7shAAqKtDB@cluster0.5xltt.mongodb.net/?retryWrites=true&w=majority";
+  "mongodb://localhost/eltorgman" : process.env.DB_URI;
 
 // ..:: connect to database ::..
 mongoose.connect(

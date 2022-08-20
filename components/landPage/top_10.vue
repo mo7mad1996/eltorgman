@@ -1,5 +1,7 @@
 <template>
   <section v-if="subjects.length" class="continer">
+    <h1 class="title">أكثر المواضيع قراءه</h1>
+
     <main class="__subjects">
       <nuxt-link
         :to="`/subject/${subject._id}`"
@@ -7,7 +9,9 @@
         :key="subject._id"
         :title="subject.title"
         class="_subject"
-        :style="`--color: hsla( ${Math.floor(Math.random() * 360)},30% ,50% ,0.2)`"
+        :style="`--color: hsla( ${Math.floor(
+          Math.random() * 360
+        )},30% ,50% ,0.2)`"
       >
         <div class="img">
           <img :src="subject.img" />

@@ -1,5 +1,7 @@
 <template>
   <section>
+    <h1 class="title">أحدث المواضيع</h1>
+
     <main class="__subjects">
       <nuxt-link
         :to="`/subject/${subject._id}`"

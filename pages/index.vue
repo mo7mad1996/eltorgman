@@ -27,7 +27,7 @@ export default {
   async asyncData({ $axios }) {
     const response = await Promise.all([
       $axios.$get("/prices"),
-      $axios.$get("/news/new?limit=4"),
+      $axios.$get("/news/new?limit=10"),
       $axios.$get("/subjects/top?limit=12"),
       $axios.$get("/subjects/new?limit=10"),
     ]);

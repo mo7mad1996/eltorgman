@@ -16,7 +16,7 @@ module.exports = (router) => {
   });
 
   router.post("/news/add", (req, res) => {
-    new News(req.body).save().then(data => res.json(data))
+    new News(req.body).save().then(data => res.json(data)).catch(err => console.log(err))
   });
 
   router.put('/news/update/:id', (req, res) => {

@@ -1,32 +1,36 @@
 <template>
-  <div class="__news" v-if="news.length">
-    <div class="right">
-      <ul>
-        <nuxt-link
-          :to="'/news/' + n._id"
-          v-for="n in news"
-          :key="n._id"
-          :title="n.title"
-        >
-          <li>
-            <div class="content">
-              <h3>{{ n.title }}</h3>
-              <p>{{ n.subtitle }}</p>
-            </div>
-            <div class="img">
-              <img
-                :src="n.img || '/images/general/logo.svg'"
-                :alt="n.img ? n.title : 'الترجمان'"
-              />
-            </div>
-          </li>
-        </nuxt-link>
-      </ul>
+  <section v-if="news.length">
+    <h1 class="title">أخر الاخبار</h1>
+    
+    <div class="__news">
+      <div class="right">
+        <ul>
+          <nuxt-link
+            v-for="(n, index) in news"
+            :to="'/news/' + n._id"
+            :key="n._id"
+            :title="n.title"
+            :style="`grid-area: a${index + 1};`"
+          >
+            <li>
+              <div class="content">
+                <h3>{{ n.title }}</h3>
+                <p>{{ n.subtitle }}</p>
+              </div>
+              <div class="img">
+                <img
+                  :src="n.img || '/images/general/logo.svg'"
+                  :alt="n.img ? n.title : 'الترجمان'"
+                />
+              </div>
+            </li>
+          </nuxt-link>
+        </ul>
+      </div>
+
+      <div class="left">Ads here</div>
     </div>
-
-    <div class="left">Ads here</div>
-  </div>
-
+  </section>
   <No_items v-else type="أخبار بعد" />
 </template>
 
@@ -63,64 +67,32 @@ export default {
 
   .right {
     ul {
-      padding: 20px;
-      color: #333;
-
-      a {
-        color: inherit;
-        text-decoration: none;
-      }
+      display: grid;
+      grid-template:
+        "a1 a1 a1 a2 a2"
+        "a1 a1 a1 a2 a2"
+        "a3 a4 a5 a6 a7"
+        "a8 a8 a9 a9 a10";
+      grid-template-rows: repeat(4, 200px);
 
       li {
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-          rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-        background: white;
-        // border: 2px solid #122851;
-        border-radius: 20px;
-        position: relative;
-        margin-bottom: 50px;
+        display: block;
         list-style: none;
-        display: flex;
-        transition: 0.2s;
-        padding: 20px;
-        top: 20px;
+        width: 100%;
+        height: 100%;
 
         .content {
-          flex: 1;
-
-          h3 {
-            margin: 0;
-            font-size: 1.5em;
-
-            @media (max-width: 120px) {
-              font-size: 1.25em;
-            }
-          }
+          display: none;
         }
+
         .img {
-          width: 120px;
-          height: 120px;
-
-          // border-radius: 10px;
-          overflow: hidden;
-          position: relative;
-          top: -50px;
-          transition: inherit;
-
+          height: 100%;
+          width: 100%;
           img {
             display: block;
             width: 100%;
             height: 100%;
             object-fit: cover;
-          }
-        }
-
-        &:hover {
-          text-decoration: underline;
-
-          top: 0;
-          .img {
-            top: 0;
           }
         }
       }

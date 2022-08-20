@@ -146,16 +146,21 @@ export default {
             this.set_alert({ type: "error", text: "تعذر تعديل الخبر" });
           });
       } else {
-        this.$axios.$post("/news/add", news).then((data) => {
-          this.set_alert({ type: "Success", text: "تمت الاضافة" });
-          this.$refs.form.reset();
-          this.title = "";
-          this.preview_img = "";
-          this.news = "";
-          this.subtitle = "";
+        this.$axios
+          .$post("/news/add", news)
+          .then((data) => {
+            this.set_alert({ type: "Success", text: "تمت الاضافة" });
+            this.$refs.form.reset();
+            this.title = "";
+            this.preview_src = "";
+            this.news = "<div> الخبر</div>";
+            this.subtitle = "";
 
-          this.loading = false;
-        });
+            this.loading = false;
+          })
+          .catch((err) => {
+            console.log(err);
+          });
       }
     },
   },
