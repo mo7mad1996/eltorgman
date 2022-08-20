@@ -12,7 +12,7 @@ module.exports = (router) => {
       .sort({
         date: -1
       })
-      .then((news) => res.json(news));
+      .then((news) => res.json(news)).catch(err => res.status(err.status).json(err))
   });
 
   router.post("/news/add", (req, res) => {
@@ -47,14 +47,14 @@ module.exports = (router) => {
     .then((single_news) =>
       News.findByIdAndUpdate(req.params.id, {
         views: single_news.views + 1,
-      }).then((new_content) => res.json(new_content))
+      }).then((new_content) => res.json(new_content)).catch(err => res.status(err.status).json(err))
     )
-    .catch((err) => res.json(err))
+    .catch(err => res.status(err.status).json(err))
   );
 
   router.delete('/news/delete/:id',
     (req, res) => {
       // 1) remove from database
-      News.findByIdAndDelete(req.params.id).then(data => res.json(data))
+      News.findByIdAndDelete(req.params.id).then(data => res.json(data)).catch(err => res.status(err.status).json(err))
     })
 };

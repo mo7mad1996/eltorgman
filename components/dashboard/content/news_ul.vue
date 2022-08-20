@@ -44,7 +44,9 @@ export default {
           this.$axios
             .$delete("/news/delete/" + id)
             .then((_) => this.$emit("remove", id))
-        );
+            .catch((err) => console.log(err))
+        )
+        .catch((err) => console.log(err));
     },
   },
 };

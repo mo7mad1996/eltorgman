@@ -9,6 +9,7 @@ module.exports = (router) => {
       vist: -1,
     })
     .then((subjects) => res.json(subjects))
+    .catch(err => res.status(err.status).json(err))
   );
 
   router.get("/subjects/new", (req, res) =>
@@ -18,6 +19,7 @@ module.exports = (router) => {
     })
     .limit(+req.query.limit)
     .then((subjects) => res.json(subjects))
+    .catch(err => res.status(err.status).json(err))
   );
 
   router.get("/subjects", (req, res) =>
@@ -26,7 +28,7 @@ module.exports = (router) => {
       date: -1
     })
     .then((subjects) => res.json(subjects))
-    .catch((err) => console.log(err))
+    .catch(err => res.status(err.status).json(err))
   );
 
   router.get("/single_subject/:id", (req, res) =>
@@ -89,5 +91,5 @@ module.exports = (router) => {
 
   router.delete("/subjects/delete/:id", (req, res) =>
     Subject.findByIdAndDelete(req.params.id).then((subjects) =>
-      res.json(subjects)));
+      res.json(subjects)).catch(err => res.status(err.status).json(err)));
 }

@@ -37,12 +37,13 @@ export default {
       if (start < 10) img = "/images/general/logo.svg";
 
       var div = document.createElement("div");
+      let textelement = "<div>" + text + "</div>";
 
-      let textelement = "div" + text + "</div>";
       div.innerHTML = textelement.trim();
 
       // Change this to div.childNodes to support multiple top-level nodes.
-      let text_content = div.firstChild.innerText.slice(0, 60) + "...";
+      let text_content =
+        div.firstChild.innerText.slice(0, 60) + " ...إقرأ المزيد";
 
       return Object.assign(subject, { img, text_content });
     });

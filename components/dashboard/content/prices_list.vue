@@ -58,24 +58,31 @@ export default {
       this.newData[form._id] = e.target.value;
     },
     add() {
-      this.$axios.$post("/prices/add", { name: this.newItem }).then((item) => {
-        this.forms.push(item);
-        this.newItem = "";
-      });
+      this.$axios
+        .$post("/prices/add", { name: this.newItem })
+        .then((item) => {
+          this.forms.push(item);
+          this.newItem = "";
+        })
+        .catch((err) => console.log(err));
     },
     remove(id) {
       if (confirm("هل تريد حذف المنتج من التسعير؟"))
-        this.$axios.$delete("/prices/delete/" + id).then((item) => {
-          this.$emit("remove", id);
-          this.set_alert({ type: "success", text: "تم حذف العنصر" });
-        });
+        this.$axios
+          .$delete("/prices/delete/" + id)
+          .then((item) => {
+            this.$emit("remove", id);
+            this.set_alert({ type: "success", text: "تم حذف العنصر" });
+          })
+          .catch((err) => console.log(err));
     },
     update(form) {
       this.$axios
         .$patch("/prices/" + form._id, { value: this.newData[form._id] })
         .then((_) =>
           this.set_alert({ type: "success", text: "تم تحديث البيانات" })
-        );
+        )
+        .catch((err) => console.log(err));
     },
   },
 };

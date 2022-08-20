@@ -48,7 +48,8 @@ export default {
       if (confirm("هل انت متأكد من حذف الموضوع"))
         this.$axios
           .$delete("/subjects/delete/" + id)
-          .then((_) => this.$emit("removed", id));
+          .then((_) => this.$emit("removed", id))
+          .catch((err) => console.log(err));
     },
   },
   components: { No_items },

@@ -46,21 +46,24 @@ export default {
     ...mapActions(["set_alert"]),
     submit() {
       this.loading = true;
-      this.$axios.$post("/contact", this.form).then(({ sent }) => {
-        this.loading = false;
-        this.set_alert({
-          type: sent ? "success" : "error",
-          text: sent
-            ? "شكرا على إقتراحك، سنحاول التواصل معك"
-            : "تعذر إرسال اقتراحك",
-        });
+      this.$axios
+        .$post("/contact", this.form)
+        .then(({ sent }) => {
+          this.loading = false;
+          this.set_alert({
+            type: sent ? "success" : "error",
+            text: sent
+              ? "شكرا على إقتراحك، سنحاول التواصل معك"
+              : "تعذر إرسال اقتراحك",
+          });
 
-        this.form = {
-          name: "",
-          phone: "",
-          msg: "",
-        };
-      });
+          this.form = {
+            name: "",
+            phone: "",
+            msg: "",
+          };
+        })
+        .catch((err) => console.log(err));
     },
   },
   components: { Loading },

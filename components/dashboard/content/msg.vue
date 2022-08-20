@@ -28,11 +28,14 @@ export default {
   methods: {
     remove(id) {
       this.loading = true;
-      this.$axios.$delete("/contact/" + id).then((_) => {
-        this.loading = false;
+      this.$axios
+        .$delete("/contact/" + id)
+        .then((_) => {
+          this.loading = false;
 
-        this.$emit("remove", this.msg);
-      });
+          this.$emit("remove", this.msg);
+        })
+        .catch((err) => console.log(err));
     },
   },
 };

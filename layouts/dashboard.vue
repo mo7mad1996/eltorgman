@@ -43,7 +43,10 @@ import { mapActions, mapGetters } from "vuex";
 export default {
   name: "dashboard",
   mounted() {
-    this.$axios.$get("/contact/unread").then((data) => this.set_unread(data));
+    this.$axios
+      .$get("/contact/unread")
+      .then((data) => this.set_unread(data))
+      .catch((err) => console.log(err));
   },
   methods: mapActions(["set_unread"]),
   computed: mapGetters(["unread"]),

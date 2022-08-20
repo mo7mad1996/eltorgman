@@ -117,7 +117,8 @@ export default {
                   "Content-Type": "multipart/form-data",
                 },
               })
-              .then(({ file }) => this.save(file));
+              .then(({ file }) => this.save(file))
+              .catch((err) => console.log(err));
           } else {
             this.save("");
           }
