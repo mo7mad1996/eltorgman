@@ -13,6 +13,7 @@
         <div class="titles">
           <h2>{{ subject.title }}</h2>
           <h3>{{ subject.subtitle }}</h3>
+          <p>{{ subject.text_content }}</p>
         </div>
       </nuxt-link>
     </main>
@@ -34,7 +35,16 @@ export default {
       let img = text.substring(start, end);
 
       if (start < 10) img = "/images/general/logo.svg";
-      return Object.assign(subject, { img });
+
+      var div = document.createElement("div");
+
+      let textelement = "div" + text + "</div>";
+      div.innerHTML = textelement.trim();
+
+      // Change this to div.childNodes to support multiple top-level nodes.
+      let text_content = div.firstChild.innerText.slice(0, 60) + "...";
+
+      return Object.assign(subject, { img, text_content });
     });
   },
 };
