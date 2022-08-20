@@ -134,27 +134,18 @@
   display: flex;
 }
 
-.subject {
-  div {
-    max-width: 100%;
-  }
-
-  img {
-    object-fit: contain;
-    max-width: 100%;
-    height: 100%;
-    width: 100%;
-  }
+.subject img {
+  max-width: 100%;
+  width: 340px;
+  max-height: 320px;
+  display: block;
+  margin: auto;
 }
 
 .textarea {
   padding: 10px;
   margin: 10px 0;
 
-  div {
-    resize: both;
-    overflow: auto;
-  }
 }
 
 .gray {
