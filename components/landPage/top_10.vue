@@ -1,6 +1,6 @@
 <template>
   <section v-if="subjects.length" class="continer">
-    <h1 class="title">أكثر المواضيع قراءه</h1>
+    <h2 class="title">أكثر المواضيع قراءه</h2>
 
     <main class="__subjects">
       <nuxt-link

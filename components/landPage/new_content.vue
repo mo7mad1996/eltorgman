@@ -1,6 +1,6 @@
 <template>
   <section>
-    <h1 class="title">أحدث المواضيع</h1>
+    <h2 class="title">أحدث المواضيع</h2>
 
     <main class="__subjects">
       <nuxt-link
