@@ -43,7 +43,7 @@ export default {
 
       // Change this to div.childNodes to support multiple top-level nodes.
       let text_content =
-        div.firstChild.innerText.slice(0, 60) + " ...إقرأ المزيد";
+        div.firstChild.innerText.slice(0, 120) + " ...إقرأ المزيد";
 
       return Object.assign(subject, { img, text_content });
     });
