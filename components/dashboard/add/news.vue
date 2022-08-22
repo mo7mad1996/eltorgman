@@ -28,17 +28,18 @@
 
       <article>
         <div class="input_field">
-          <h3 for="news">
+          <div for="news">
             الخبر
+
             <button @click.prevent="in_edit = !in_edit" title="تعديل">
               <Toggle />
             </button>
-          </h3>
+          </div>
           <p
+            class="subject"
             id="news"
             ref="news"
             :contentEditable="in_edit"
-            class="subject"
             :class="in_edit && 'textarea'"
             v-html="news"
           ></p>
@@ -112,7 +113,7 @@ export default {
             );
 
             this.$axios
-              .$post("https://filesaver3.herokuapp.com/", formdata, {
+              .$post("/save_file/", formdata, {
                 headers: {
                   "Content-Type": "multipart/form-data",
                 },

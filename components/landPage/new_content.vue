@@ -88,6 +88,7 @@ section {
 
       img {
         max-height: 100%;
+        width: 220px;
       }
     }
   }

@@ -1,8 +1,10 @@
 const path = require("path");
 const mongoose = require("mongoose");
 const News = mongoose.model("news");
-const fs = require('fs')
 
+const formidable = require('formidable')
+const cloudinary = require("cloudinary").v2;
+cloudinary.config().cloud_name
 
 module.exports = (router) => {
 
@@ -57,4 +59,27 @@ module.exports = (router) => {
       // 1) remove from database
       News.findByIdAndDelete(req.params.id).then(data => res.json(data)).catch(err => res.status(err.status).json(err))
     })
+
+
+  router.post("/save_file", (req, res) => {
+
+    const file_name = '../../static/news/'
+    const uploadDir = path.join(__dirname, file_name)
+
+    const form = formidable({
+      uploadDir,
+      keepExtensions: true,
+      // filename: (name, ext) => name + ext,
+    });
+
+    form.parse(req, (err, fields, files) => {
+
+      cloudinary.uploader.upload(path.join(__dirname, file_name) + files.file.newFilename, {}, (err, result) => {
+        res.json({
+          file: result.url
+        })
+      })
+
+    });
+  })
 };
