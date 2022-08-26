@@ -42,6 +42,11 @@ module.exports = {
       type: "image/x-icon",
       href: "/favicon.ico"
     }],
+    script: [{
+      async: 'async',
+      src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2911925716359981",
+      crossorigin: 'anonymous'
+    }],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

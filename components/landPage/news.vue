@@ -1,7 +1,7 @@
 <template>
   <section v-if="news.length">
     <h1 class="title">أخر الاخبار</h1>
-    
+
     <div class="__news">
       <div class="right">
         <ul>
@@ -28,13 +28,25 @@
         </ul>
       </div>
 
-      <div class="left">Ads here</div>
+      <div class="left">
+        <ins
+          class="adsbygoogle"
+          style="display: block"
+          data-ad-client="ca-pub-2911925716359981"
+          data-ad-slot="5073119586"
+          data-ad-format="auto"
+          data-full-width-responsive="true"
+        ></ins>
+      </div>
     </div>
   </section>
   <No_items v-else type="أخبار بعد" />
 </template>
 
 <script>
+if (process.title == "browser") {
+  setTimeout((_) => (adsbygoogle = window.adsbygoogle || []).push({}), 10000);
+}
 import No_items from "~/components/search/no_items";
 
 export default {
@@ -67,6 +79,7 @@ export default {
 
   .right {
     ul {
+      padding: 0;
       display: grid;
       grid-template:
         "a1 a1 a1 a2 a2"

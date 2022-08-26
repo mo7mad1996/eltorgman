@@ -15,7 +15,7 @@ module.exports = (router) => {
       username: 'admin',
       password,
       name: 'Mohamed'
-    }).save().then(_ => res.end('done')).catch(err => res.status(err.status).json(err))
+    }).save().then(_ => res.end('done')).catch(err => res.status(500).json(err))
   })
 
   // Login
@@ -113,6 +113,6 @@ module.exports = (router) => {
       else res.status(401).json({
         done: false
       })
-    }).catch(err => res.status(err.status).json(err))
+    }).catch(err => res.status(500).json(err))
   })
 }

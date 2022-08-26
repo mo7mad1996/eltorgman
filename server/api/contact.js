@@ -7,13 +7,13 @@ module.exports = (router) => {
       date: -1
     })
     .then(data => res.json(data))
-    .catch(err => res.status(err.status).json(err)))
+    .catch(err => res.status(500).json(err)))
 
   router.get('/contact/unread', (req, res) => Contact.find({
       unread: true
     })
     .then(data => res.json(!!data.length))
-    .catch(err => res.status(err.status).json(err)))
+    .catch(err => res.status(500).json(err)))
 
 
   router.post('/contact', (req, res) => {
@@ -21,7 +21,7 @@ module.exports = (router) => {
       res.json({
         sent: !!data
       })
-    }).catch(err => res.status(err.status).json(err))
+    }).catch(err => res.status(500).json(err))
   })
 
   router.delete('/contact/:id', (req, res) => Contact.findByIdAndDelete(req.params.id).then(data => res.json(data)))
@@ -33,7 +33,7 @@ module.exports = (router) => {
           unread: false
         })
         .then(data => res.json(data))
-        .catch(err => res.status(err.status).json(err))
+        .catch(err => res.status(500).json(err))
 
     }
   )

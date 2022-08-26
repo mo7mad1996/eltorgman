@@ -1,7 +1,7 @@
 const path = require("path");
+const axios = require('axios')
 const mongoose = require("mongoose");
 const News = mongoose.model("news");
-
 const formidable = require('formidable')
 const cloudinary = require("cloudinary").v2;
 cloudinary.config().cloud_name
@@ -10,11 +10,16 @@ module.exports = (router) => {
 
   router.get("/news", (req, res) => {
     News.find()
-      .limit()
       .sort({
         date: -1
       })
-      .then((news) => res.json(news)).catch(err => res.status(err.status).json(err))
+      .then(news => {
+        // remove the old news
+        res.json(
+          remove_old(news)
+        )
+      })
+      .catch(err => res.status(500).json(err))
   });
 
   router.post("/news/add", (req, res) => {
@@ -49,15 +54,32 @@ module.exports = (router) => {
     .then((single_news) =>
       News.findByIdAndUpdate(req.params.id, {
         views: single_news.views + 1,
-      }).then((new_content) => res.json(new_content)).catch(err => res.status(err.status).json(err))
+      })
+      .then((new_content) => res.json(new_content))
+      .catch(err => res.status(500).json(err))
     )
-    .catch(err => res.status(err.status).json(err))
+    .catch(err => res.status(500).json(err))
   );
 
   router.delete('/news/delete/:id',
     (req, res) => {
       // 1) remove from database
-      News.findByIdAndDelete(req.params.id).then(data => res.json(data)).catch(err => res.status(err.status).json(err))
+      News
+        .findByIdAndDelete(req.params.id)
+        .then(data => {
+          const
+            arr = data.img.split('/'),
+            img_name = arr[arr.length - 1],
+            img_id = img_name.split('.')[0]
+
+          cloudinary.uploader.destroy(img_id, {}, (err) => {
+            if (err) return res.status(500).json(err)
+            res.json(data)
+          })
+        })
+        .catch(err =>
+          res.status(500).json(err)
+        )
     })
 
 
@@ -83,3 +105,19 @@ module.exports = (router) => {
     });
   })
 };
+
+function remove_old(news) {
+  const one_month = 30 * 24 * 60 * 60 * 1000
+
+  const ok = []
+
+  news.forEach(s => {
+    if (new Date(s.date).valueOf() < Date.now() - one_month) {
+      axios.delete('/api/news/delete/' + s._id)
+    } else {
+      ok.push(s)
+    }
+  })
+
+  return ok
+}
