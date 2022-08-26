@@ -90,6 +90,10 @@ export default {
       grid-template-rows: repeat(4, 200px);
       list-style: none;
 
+      @media (max-width: 837px) {
+        display: block;
+      }
+
       a {
         position: relative;
         color: inherit;
@@ -101,7 +105,18 @@ export default {
           border: 1px solid #222;
           width: 100%;
           height: 100%;
-
+          @media (max-width: 837px) {
+            display: flex;
+            padding: 20px;
+            border: none;
+            border-top: 2px solid #122851;
+            margin: 10px 0;
+            background: white;
+          }
+          .img {
+            width: 200px;
+            max-width: 50%;
+          }
           img {
             position: absolute;
             inset: 0;
@@ -109,6 +124,14 @@ export default {
             height: 100%;
             object-fit: cover;
             background: #122851;
+
+            @media (max-width: 837px) {
+              all: unset;
+              width: 100%;
+              height: 120px;
+              object-fit: contain;
+              background: #122851;
+            }
           }
 
           .content {
@@ -121,6 +144,10 @@ export default {
             padding: 2em;
             background-image: linear-gradient(transparent, black);
 
+            @media (max-width: 837px) {
+              all: unset;
+              flex: 1;
+            }
             * {
               margin: 0;
             }
