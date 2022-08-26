@@ -24,9 +24,10 @@ mongoose.model(
       type: Date,
       default: Date.now,
     },
-    key_words: [{ type: String }],
+    key_words: [{
+      type: String
+    }],
     vist: {
-      required: true,
       type: Number,
       default: 0,
     },

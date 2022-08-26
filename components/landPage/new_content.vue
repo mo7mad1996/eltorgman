@@ -78,7 +78,8 @@ section {
     }
 
     .img {
-      height: 160px;
+      margin-right: 20px;
+
       @media (max-width: 391px) {
         display: none;
       }
@@ -87,8 +88,8 @@ section {
       }
 
       img {
-        max-height: 100%;
         width: 220px;
+        height: 160px;
       }
     }
   }

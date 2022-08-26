@@ -6,8 +6,9 @@
       <!-- <Top_10 /> -->
       <main>
         <News :news="new_news" />
-        <Top_10 :top_subjects="top_subjects" />
+        <Top_News :top_news="top_news" />
 
+        <Top_10 :top_subjects="top_subjects" />
         <!-- <new_content /> -->
         <New_content :new_subjects="new_subjects" />
       </main>
@@ -16,10 +17,12 @@
 </template>
 
 <script>
+// components
+import Price from "~/components/landPage/price";
+import News from "~/components/landPage/news";
+import Top_News from "~/components/landPage/top_News";
 import Top_10 from "~/components/landPage/top_10";
 import New_content from "~/components/landPage/new_content";
-import News from "~/components/landPage/news";
-import Price from "~/components/landPage/price";
 
 export default {
   name: "LandPage",
@@ -28,22 +31,25 @@ export default {
     const response = await Promise.all([
       $axios.$get("/prices"),
       $axios.$get("/news/new?limit=10"),
-      $axios.$get("/subjects/top?limit=12"),
+      $axios.$get("/news/top?limit=10"),
       $axios.$get("/subjects/new?limit=10"),
+      $axios.$get("/subjects/top?limit=12"),
     ]);
 
     return {
       prices: response[0],
       new_news: response[1],
-      top_subjects: response[2],
+      top_news: response[2],
       new_subjects: response[3],
+      top_subjects: response[4],
     };
   },
   components: {
+    Price,
+    News,
+    Top_News,
     Top_10,
     New_content,
-    News,
-    Price,
   },
 };
 </script>

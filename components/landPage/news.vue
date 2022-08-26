@@ -80,32 +80,54 @@ export default {
   .right {
     ul {
       padding: 0;
+      gap: 2px;
       display: grid;
       grid-template:
-        "a1 a1 a1 a2 a2"
-        "a1 a1 a1 a2 a2"
-        "a3 a4 a5 a6 a7"
-        "a8 a8 a9 a9 a10";
+        "a2 a2 a1 a1 a1"
+        "a2 a2 a1 a1 a1"
+        "a3 a4 a1 a1 a1"
+        "a9 a8 a7 a6 a5";
       grid-template-rows: repeat(4, 200px);
+      list-style: none;
 
-      li {
-        display: block;
-        list-style: none;
-        width: 100%;
-        height: 100%;
+      a {
+        position: relative;
+        color: inherit;
+        text-decoration: none;
+        border-radius: 20px;
+        overflow: hidden;
 
-        .content {
-          display: none;
-        }
-
-        .img {
-          height: 100%;
+        li {
+          border: 1px solid #222;
           width: 100%;
+          height: 100%;
+
           img {
-            display: block;
+            position: absolute;
+            inset: 0;
             width: 100%;
             height: 100%;
             object-fit: cover;
+            background: #122851;
+          }
+
+          .content {
+            position: absolute;
+            z-index: 2;
+            bottom: 0;
+            text-align: center;
+            width: 100%;
+            color: white;
+            padding: 2em;
+            background-image: linear-gradient(transparent, black);
+
+            * {
+              margin: 0;
+            }
+
+            p {
+              font-size: 0.7em;
+            }
           }
         }
       }

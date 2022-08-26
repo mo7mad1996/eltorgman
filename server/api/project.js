@@ -35,10 +35,11 @@ module.exports = (router) => {
     Subject.findById(req.params.id)
     .then((data) => {
       Subject.findByIdAndUpdate(req.params.id, {
-        vist: data.vist + 1
-      }).then(
-        (update) => res.json(update)
-      );
+          vist: data.vist + 1
+        })
+        .then(
+          (update) => res.json(update)
+        )
     })
     .catch((err) => res.json(err)));
 
@@ -56,7 +57,7 @@ module.exports = (router) => {
     new Subject(req.body)
     .save()
     .then((data) => res.json(data))
-    .catch((err) => res.status(401).json(err)))
+    .catch((err) => res.status(500).json(err)))
 
   router.post("/subjects/search", async (req, res) => {
     const sections = await Subject.find({
@@ -90,6 +91,8 @@ module.exports = (router) => {
 
 
   router.delete("/subjects/delete/:id", (req, res) =>
-    Subject.findByIdAndDelete(req.params.id).then((subjects) =>
-      res.json(subjects)).catch(err => res.status(500).json(err)));
+    Subject.findByIdAndDelete(req.params.id)
+    .then((subjects) =>
+      res.json(subjects))
+    .catch(err => res.status(500).json(err)));
 }

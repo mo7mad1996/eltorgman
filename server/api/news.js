@@ -40,6 +40,15 @@ module.exports = (router) => {
       })
   })
 
+  router.get("/news/top", (req, res) => {
+    News.find()
+      .limit(+req.query.limit)
+      .sort({
+        views: -1,
+      })
+      .then((news) => res.json(news))
+      .catch(err => res.status(500).json(err))
+  })
   router.get("/news/new", (req, res) =>
     News.find()
     .limit(+req.query.limit)
@@ -47,6 +56,7 @@ module.exports = (router) => {
       date: -1
     })
     .then((news) => res.json(news))
+    .catch(err => res.status(500).json(err))
   );
 
   router.get("/single_news/:id", (req, res) =>
@@ -72,16 +82,22 @@ module.exports = (router) => {
             img_name = arr[arr.length - 1],
             img_id = img_name.split('.')[0]
 
-          cloudinary.uploader.destroy(img_id, {}, (err) => {
-            if (err) return res.status(500).json(err)
+
+          if (arr.some(el => el == 'res.cloudinary.com'))
+
+            cloudinary.uploader.destroy(img_id, {}, (err) => {
+              if (err) return res.status(500).json(err)
+              res.json(data)
+            })
+
+          else
             res.json(data)
-          })
+
         })
         .catch(err =>
           res.status(500).json(err)
         )
     })
-
 
   router.post("/save_file", (req, res) => {
 
@@ -97,6 +113,7 @@ module.exports = (router) => {
     form.parse(req, (err, fields, files) => {
 
       cloudinary.uploader.upload(path.join(__dirname, file_name) + files.file.newFilename, {}, (err, result) => {
+        if (err) return res.status(402).json(err)
         res.json({
           file: result.url
         })
