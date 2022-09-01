@@ -105,12 +105,12 @@ export default {
           border: 1px solid #222;
           width: 100%;
           height: 100%;
+
           @media (max-width: 837px) {
             display: flex;
             padding: 20px;
             border: none;
-            border-top: 2px solid #122851;
-            margin: 10px 0;
+            border-bottom: 1.3px solid #eee;
             background: white;
           }
           .img {
