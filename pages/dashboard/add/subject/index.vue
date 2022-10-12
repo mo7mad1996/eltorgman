@@ -1,8 +1,8 @@
 <template>
-  <section class="__add_new_subject dashboard_section">
+  <section class="__add_new_subject dashboard_section" ref="continer">
     <h4 class="dashboard_title">إضافة موضوع</h4>
 
-    <GET_artical />
+    <GET_artical @go_to_top="scroll_up" />
   </section>
 </template>
 
@@ -15,6 +15,11 @@ export default {
   components: { GET_artical },
   layout: "dashboard",
   head: { title: "إضافة موضوع جديد" },
+  methods: {
+    scroll_up() {
+      this.$refs.continer.scrollTo(0, 0);
+    },
+  },
 };
 </script>
 

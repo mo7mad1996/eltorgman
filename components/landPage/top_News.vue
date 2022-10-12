@@ -3,7 +3,12 @@
     <h2 class="title">أهم الأخبار لهذا الشهر</h2>
 
     <div class="news">
-      <div class="item" v-for="news in top_news" :key="news._id">
+      <nuxt-link
+        :to="`/news/${news._id}`"
+        class="item"
+        v-for="news in top_news"
+        :key="news._id"
+      >
         <div class="news_img">
           <img
             :alt="news.title"
@@ -15,7 +20,7 @@
           <h4>{{ news.title }}</h4>
           <p>{{ news.subtitle }}</p>
         </div>
-      </div>
+      </nuxt-link>
     </div>
   </section>
 </template>
@@ -46,6 +51,7 @@ export default {
     max-width: 220px;
     min-width: 220px;
     flex: 1;
+    text-decoration: none;
     border-radius: 10px;
     overflow: hidden;
     box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px,

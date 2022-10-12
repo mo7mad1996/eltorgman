@@ -159,6 +159,7 @@ export default {
             this.subtitle = "";
 
             this.loading = false;
+            this.$emit("go_to_top");
           })
           .catch((err) => {
             console.log(err);

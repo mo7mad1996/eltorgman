@@ -11,6 +11,7 @@
             :key="n._id"
             :title="n.title"
             :style="`grid-area: a${index + 1};`"
+            :class="`a${index + 1}`"
           >
             <li>
               <div class="content">
@@ -133,7 +134,6 @@ export default {
               background: #122851;
             }
           }
-
           .content {
             position: absolute;
             z-index: 2;
@@ -155,6 +155,18 @@ export default {
             p {
               font-size: 0.7em;
             }
+          }
+        }
+      }
+
+      .a5,
+      .a6,
+      .a7,
+      .a8,
+      .a9 {
+        .content {
+          @media (min-width: 837px) {
+            font-size: 12px;
           }
         }
       }

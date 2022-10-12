@@ -145,6 +145,7 @@ export default {
               this.subject.title = "";
               this.subject.key_words = [];
               this.loading = false;
+              this.$emit("go_to_top");
             })
             .catch((err) => {
               this.set_alert({ text: "خطأ في الاضافه", type: "error" });

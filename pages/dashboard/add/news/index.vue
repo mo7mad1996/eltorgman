@@ -1,8 +1,8 @@
 <template>
-  <section class="dashboard_section">
+  <section class="dashboard_section" ref="continer">
     <h1 class="dashboard_title">إضافة خبر جديد</h1>
 
-    <Add_news />
+    <Add_news @go_to_top="scroll_up" />
   </section>
 </template>
 
@@ -15,6 +15,11 @@ export default {
   components: { Add_news },
   layout: "dashboard",
   head: { title: "إضافة خبر جديد" },
+  methods: {
+    scroll_up() {
+      this.$refs.continer.scrollTo(0, 0);
+    },
+  },
 };
 </script>
 

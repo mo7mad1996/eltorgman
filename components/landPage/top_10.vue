@@ -13,9 +13,7 @@
           Math.random() * 360
         )},30% ,50% ,0.2)`"
       >
-        <div class="img">
-          <img :src="subject.img" />
-        </div>
+        <div class="img"><img :src="subject.img" /></div>
 
         <div class="details">
           <h2>{{ subject.title }}</h2>
@@ -34,6 +32,7 @@ import No_items from "~/components/search/no_items";
 export default {
   name: "Top_10",
   props: ["top_subjects"],
+
   data() {
     return { subjects: [] };
   },
@@ -43,7 +42,6 @@ export default {
       const start = text.indexOf('<img src="') + 10;
       const end = text.indexOf('"', start + 1);
       let img = text.substring(start, end);
-
       if (start < 10) img = "/images/general/logo.svg";
       return Object.assign(subject, { img });
     });
@@ -51,6 +49,7 @@ export default {
   components: { No_items },
 };
 </script>
+
 
 <style lang="scss" scoped>
 .__subjects {

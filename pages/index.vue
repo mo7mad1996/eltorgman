@@ -1,5 +1,5 @@
 <template>
-  <div class="__land_page">
+  <div class="__land_page" v-once>
     <Price :prices="prices" v-if="prices.length" />
 
     <div class="continer">
@@ -30,10 +30,10 @@ export default {
   async asyncData({ $axios }) {
     const response = await Promise.all([
       $axios.$get("/prices"),
-      $axios.$get("/news/new?limit=10"),
-      $axios.$get("/news/top?limit=10"),
+      $axios.$get("/news/new?limit=9"),
+      $axios.$get("/news/top"),
       $axios.$get("/subjects/new?limit=10"),
-      $axios.$get("/subjects/top?limit=12"),
+      $axios.$get("/subjects/top"),
     ]);
 
     return {
