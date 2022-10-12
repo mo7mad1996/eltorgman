@@ -32,8 +32,8 @@ export default {
       $axios.$get("/prices"),
       $axios.$get("/news/new?limit=9"),
       $axios.$get("/news/top"),
-      $axios.$get("/subjects/new?limit=10"),
-      $axios.$get("/subjects/top"),
+      $axios.$get("/subjects/new"),
+      $axios.$get("/subjects/top?limit=12"),
     ]);
 
     return {

@@ -81,7 +81,7 @@ export default {
   .right {
     ul {
       padding: 0;
-      gap: 2px;
+      gap: 5px;
       display: grid;
       grid-template:
         "a2 a2 a1 a1 a1"
@@ -99,7 +99,7 @@ export default {
         position: relative;
         color: inherit;
         text-decoration: none;
-        border-radius: 20px;
+        border-radius: 10px;
         overflow: hidden;
 
         li {
