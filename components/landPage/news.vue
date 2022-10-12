@@ -159,6 +159,8 @@ export default {
         }
       }
 
+      .a3,
+      .a4,
       .a5,
       .a6,
       .a7,
@@ -167,6 +169,7 @@ export default {
         .content {
           @media (min-width: 837px) {
             font-size: 12px;
+            padding: 8px;
           }
         }
       }
