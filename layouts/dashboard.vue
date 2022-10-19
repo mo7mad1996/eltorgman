@@ -159,7 +159,7 @@ a {
       flex: 1;
       ul {
         list-style: none;
-        // padding-right: 10px;
+        padding-right: 0px;
 
         a {
           // border-radius: 0 20px 20px 0;
