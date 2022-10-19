@@ -171,7 +171,7 @@ a {
             text-decoration: underline;
           }
 
-          &.nuxt-link-exact-active {
+          &.nuxt-link-active {
             // background: linear-gradient(to left, #c46b90, transparent);
             color: #c46b90;
             position: relative;
@@ -183,7 +183,7 @@ a {
               left: auto;
               width: 5px;
               background: #c46b90;
-              border-right: 10px 0 0 10px;
+              border-radius: 10px 0 0 10px;
             }
           }
         }
