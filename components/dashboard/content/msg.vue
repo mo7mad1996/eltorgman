@@ -82,7 +82,12 @@ export default {
 
   .phone {
     color: black;
-    margin: 10px;
+    margin: 10px 0;
+  }
+
+  .gray {
+    color: #c2c3c7;
+    font-size: 0.8em;
   }
 }
 

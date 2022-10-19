@@ -24,6 +24,7 @@
           </li>
         </ul>
       </nav>
+
       <button @click="$auth.logout()" class="logout">خروج</button>
     </aside>
     <main>
@@ -171,10 +172,17 @@ a {
           }
 
           &.nuxt-link-exact-active {
-            background: linear-gradient(to left, #c46b90, transparent);
+            // background: linear-gradient(to left, #c46b90, transparent);
+            color: #c46b90;
 
-            .icon {
-              color: white;
+            &::after {
+              content: "";
+              position: absolute;
+              inset: 0;
+              left: auto;
+              width: 5px;
+              background: #c46b90;
+              border-right: 10px 0 0 10px;
             }
           }
         }

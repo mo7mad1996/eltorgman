@@ -97,6 +97,8 @@ export default {
       background: white;
       padding: 10px;
       margin: 30px 0;
+      border: 1px solid #d0cccc;
+      border-radius: 5px;
 
       label {
         display: block;
@@ -165,23 +167,30 @@ export default {
     outline: none;
   }
 
-  .add_form form {
+  .add_form {
+    position: sticky;
+    bottom: 0;
+    background: rgba(255, 255, 255, 0.95);
     padding: 10px;
-    display: flex;
-    gap: 10px;
 
-    button {
-      border: 1px solid #0f235c;
-      color: #0f235c;
-      background: #56fa7d;
-      padding: 2px 10px;
-      cursor: pointer;
-      padding: 8px 15px;
-      display: block;
-      border-radius: 5px;
+    form {
+      padding: 10px;
+      display: flex;
+      gap: 10px;
 
-      &:hover {
-        filter: brightness(120%);
+      button {
+        border: 1px solid #0f235c;
+        color: #0f235c;
+        background: #56fa7d;
+        padding: 2px 10px;
+        cursor: pointer;
+        padding: 8px 15px;
+        display: block;
+        border-radius: 5px;
+
+        &:hover {
+          filter: brightness(120%);
+        }
       }
     }
   }
