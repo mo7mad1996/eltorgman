@@ -159,10 +159,10 @@ a {
       flex: 1;
       ul {
         list-style: none;
-        padding-right: 10px;
+        // padding-right: 10px;
 
         a {
-          border-radius: 0 20px 20px 0;
+          // border-radius: 0 20px 20px 0;
           padding: 10px 20px;
           display: flex;
           gap: 15px;
@@ -174,6 +174,7 @@ a {
           &.nuxt-link-exact-active {
             // background: linear-gradient(to left, #c46b90, transparent);
             color: #c46b90;
+            position: relative;
 
             &::after {
               content: "";
