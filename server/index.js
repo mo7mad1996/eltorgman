@@ -10,18 +10,24 @@ const {
 
 // ..:: Constants ::..
 const app = express();
-const config = require("../nuxt.config");
-let dev = config.dev;
 
-const DB_URI = dev ?
-  "mongodb://localhost/eltorgman" : process.env.DB_URI;
+// ..:: middlewares ::..
+require("./middlewares")(app);
+const config = require("../nuxt.config");
 
 // ..:: connect to database ::..
-mongoose.connect(
-  DB_URI, {
-    useNewUrlParser: true,
-  }
-);
+// mongodb+srv://mo7mad1996:EFPp8t7shAAqKtDB@cluster0.5xltt.mongodb.net/?retryWrites=true&w=majority
+const DB_URI = process.env.DB_URI;
+
+mongoose
+  .connect(
+    DB_URI, {
+      useNewUrlParser: true,
+    }
+  )
+  .then(( /* v */ ) => console.log('>_ connect to Database' /*, v */ ))
+  .catch(err => console.log('>_ Cannot connect with DB:', err))
+
 
 // ..:: database modles ::..
 require("./models/user");
@@ -29,9 +35,6 @@ require("./models/subject");
 require("./models/news");
 require("./models/price");
 require("./models/contact");
-
-// ..:: middlewares ::..
-require("./middlewares")(app);
 
 // ..:: routes ::..
 app.use("/api", require("./api"));
@@ -49,6 +52,7 @@ async function start() {
   if (config.dev) {
     const builder = new Builder(nuxt);
     await builder.build();
+    // console.log(Object.keys(builder))
   } else {
     await nuxt.ready();
   }

@@ -3,7 +3,7 @@
     <h1 class="dashboard_title">
       <span> الاخبار </span>
 
-      <nuxt-link to="/dashboard/add/news" class="btn" title="إضافة خبر">
+      <nuxt-link to="/dashboard/news/add" class="btn" title="إضافة خبر">
         <span>
           <fa icon="microphone" />
         </span>
@@ -14,7 +14,7 @@
       <News_ul v-if="news.length" :content="news" @remove="remove" />
       <div v-else class="text-center">
         <No_items />
-        <nuxt-link to="/dashboard/add/news">أضف خبر جديد</nuxt-link>
+        <nuxt-link to="/dashboard/news/add">أضف خبر جديد</nuxt-link>
       </div>
     </div>
   </section>

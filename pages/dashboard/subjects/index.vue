@@ -4,7 +4,7 @@
       المواضيع
 
       <nuxt-link
-        to="/dashboard/add/subject"
+        to="/dashboard/subjects/add"
         title="إضافة موضوع جديد"
         class="btn"
       >

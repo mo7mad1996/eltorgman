@@ -20,7 +20,7 @@
           </button>
           <nuxt-link
             class="btn"
-            :to="'/dashboard/edit/news/' + single_news._id"
+            :to="'/dashboard/news/edit/' + single_news._id"
             title="تعديل"
           >
             <fa icon="pen" />

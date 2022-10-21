@@ -22,7 +22,7 @@ module.exports = (router) => {
   router.post("/auth/login", async (req, res) => {
     const user = await User.findOne({
       username: req.body.username
-    })
+    }).catch(err => console.log(err))
 
     // check if user exists
     if (!user) return res.status(401).send('لا يوجود مستخدم بهذا الاسم')
@@ -47,8 +47,8 @@ module.exports = (router) => {
 
   // logout
   router.delete("/auth/logout", (req, res) => res.end(''))
-  router.get("/users/me", async (req, res) => {
 
+  router.get("/users/me", async (req, res) => {
     // 1) Get token
     const token = req.headers.authorization
 
@@ -59,19 +59,16 @@ module.exports = (router) => {
     // 2) Get id
     const {
       _id
-    } = JWT.verify(token, secret)
+    } = await JWT.verify(token, secret)
 
     // 3) Get data
-    const {
-      name,
-      username
-    } = await User.findById(_id)
-
-    // 4) send data
-    res.json({
-      name,
-      username
-    })
+    User
+      .findById(_id)
+      .then((user) =>
+        /* 4) send data */
+        res.json(user)
+      )
+      .catch(err => console.log('error with get user', err))
   })
 
   router.post('/users/update', async (req, res) => {

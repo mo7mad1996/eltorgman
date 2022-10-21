@@ -20,7 +20,7 @@
             <fa icon="trash" />
           </button>
           <nuxt-link
-            :to="'/dashboard/edit/subject/' + subject._id"
+            :to="'/dashboard/subjects/edit/' + subject._id"
             class="btn"
             @click="remove(subject._id)"
             title="تعديل"
@@ -34,7 +34,7 @@
 
   <div v-else class="text-center">
     <No_items />
-    <nuxt-link to="/dashboard/add/subject">أضف موضوع جديد</nuxt-link>
+    <nuxt-link to="/dashboard/subjects/add">أضف موضوع جديد</nuxt-link>
   </div>
 </template>
 

@@ -75,7 +75,7 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import url("http://fonts.cdnfonts.com/css/aref-ruqaa");
+@import url("https://fonts.cdnfonts.com/css/aref-ruqaa");
 .__about_us {
   color: #060913;
   background: #e9e3ff;

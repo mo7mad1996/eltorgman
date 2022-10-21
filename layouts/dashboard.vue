@@ -56,17 +56,17 @@ export default {
   data: () => ({
     links: [
       {
-        to: "/dashboard/content/subjects",
+        to: "/dashboard/subjects",
         title: "المواضيع",
         icon: "building-columns",
       },
       {
-        to: "/dashboard/content/news",
+        to: "/dashboard/news",
         title: "الاخبار",
         icon: "radio",
       },
       {
-        to: "/dashboard/content/prices",
+        to: "/dashboard/prices",
         title: "الاسعار",
         icon: "money-bill-1-wave",
       },
