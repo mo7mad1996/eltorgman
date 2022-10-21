@@ -16,7 +16,6 @@ require("./middlewares")(app);
 const config = require("../nuxt.config");
 
 // ..:: connect to database ::..
-// mongodb+srv://mo7mad1996:EFPp8t7shAAqKtDB@cluster0.5xltt.mongodb.net/?retryWrites=true&w=majority
 const DB_URI = process.env.DB_URI;
 
 mongoose
