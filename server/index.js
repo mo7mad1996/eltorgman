@@ -52,7 +52,6 @@ async function start() {
   if (config.dev) {
     const builder = new Builder(nuxt);
     await builder.build();
-    // console.log(Object.keys(builder))
   } else {
     await nuxt.ready();
   }
