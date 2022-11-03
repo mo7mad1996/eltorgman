@@ -7,7 +7,7 @@
         <input required id="name" v-model="form.name" />
       </div>
       <div class="input_field">
-        <label for="phone">رقم التلفون او البريد الالكتروني:</label>
+        <label for="phone">رقم الموبايل او البريد الالكتروني:</label>
         <input required id="phone" v-model="form.phone" />
       </div>
       <div class="input_field">

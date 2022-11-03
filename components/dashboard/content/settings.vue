@@ -9,7 +9,7 @@
       <input v-model="username" id="username" required />
     </div>
     <div class="input_field">
-      <label for="newPass">كلمة المرور الدجديده</label>
+      <label for="newPass">كلمة المرور الجديده</label>
       <input v-model="newPass" id="newPass" type="password" />
     </div>
 
