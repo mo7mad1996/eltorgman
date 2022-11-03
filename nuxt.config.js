@@ -38,15 +38,29 @@ module.exports = {
       },
     ],
     link: [{
-      rel: "icon",
-      type: "image/x-icon",
-      href: "/favicon.ico"
-    }],
+        rel: "icon",
+        type: "image/x-icon",
+        href: "/favicon.ico"
+      },
+      {
+        href: "https://fonts.googleapis.com",
+        rel: 'preconnect'
+      },
+      {
+        href: 'https://fonts.gstatic.com',
+        rel: 'preconnect',
+        crossorigin: true
+      },
+      {
+        href: 'https://fonts.googleapis.com/css2?family=Almarai:wght@300;400;700&display=swap',
+        rel: "stylesheet"
+      }
+    ],
     script: [{
       async: 'async',
       src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-2911925716359981",
       crossorigin: 'anonymous'
-    }],
+    }, ],
   },
 
   // Global CSS: https://go.nuxtjs.dev/config-css

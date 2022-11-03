@@ -93,7 +93,7 @@ export default {
     padding: 20px 0 0;
     text-align: center;
     font-size: 60px;
-    font-family: "Aref Ruqaa", sans-serif;
+    font-family: "Aref Ruqaa", sans-serif !important;
 
     &::after {
       content: "";
