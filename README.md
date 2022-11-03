@@ -2,7 +2,7 @@
 
 This site was created to follow the arab's news and the prices of some products in the Egyptian market. It also contains articles on various topics.
 
-You will find the **Live Demo** for this code in [this link](https://eltorgoman.herokuapp.com/).
+You will find the **Live Demo** for this code in [this link](https://eltorgman.herokuapp.com/).
 
 #### Run the code
 ```
@@ -37,4 +37,4 @@ You will find the **Live Demo** for this code in [this link](https://eltorgoman.
 11. @nuxtjs/auth
 ``` 
 
-![Eltorgman](https://eltorgoman.herokuapp.com/images/general/logo.svg)
+![Eltorgman](https://eltorgman.herokuapp.com/images/general/logo.svg)
