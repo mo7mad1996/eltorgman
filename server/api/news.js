@@ -13,12 +13,7 @@ module.exports = (router) => {
       .sort({
         date: -1
       })
-      .then(news => {
-        // remove the old news
-        res.json(
-          remove_old(news)
-        )
-      })
+      .then(news => res.json(news))
       .catch(err => res.status(500).json(err))
   });
 
@@ -66,7 +61,9 @@ module.exports = (router) => {
         views: single_news.views + 1,
       })
       .then((new_content) => res.json(new_content))
-      .catch(err => res.status(500).json(err))
+      .catch(err => {
+        res.json(err)
+      })
     )
     .catch(err => res.status(500).json(err))
   );
@@ -122,19 +119,3 @@ module.exports = (router) => {
     });
   })
 };
-
-function remove_old(news) {
-  const one_month = 30 * 24 * 60 * 60 * 1000
-
-  const ok = []
-
-  news.forEach(s => {
-    if (new Date(s.date).valueOf() < Date.now() - one_month) {
-      axios.delete('/api/news/delete/' + s._id)
-    } else {
-      ok.push(s)
-    }
-  })
-
-  return ok
-}

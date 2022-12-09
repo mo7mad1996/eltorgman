@@ -55,7 +55,7 @@ export default {
 .__subjects {
   display: flex;
   flex-wrap: wrap;
-  gap: 20px;
+  gap: 10px;
   @media (max-width: 350px) {
     // display: block;
     flex-direction: column;
