@@ -5,6 +5,7 @@
   "scripts": {
     "v": "nuxt",
     "dev": "nodemon server",
+    "build": "nuxt build",
     "start": "node server",
     "generate": "nuxt generate"
   },
